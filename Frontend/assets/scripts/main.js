@@ -27,7 +27,8 @@ const table = {
                 "Access-Control-Allow-Origin": "http://localhost:8081/users"
             },
             success: function(data) {
-                const htmls = data.users.map((user) => {
+
+                const htmls = data.map((user) => {
                     return `
                     <tr data-index="${user.id}">
                         <td class="fullname">${user.Fullname}</td>
