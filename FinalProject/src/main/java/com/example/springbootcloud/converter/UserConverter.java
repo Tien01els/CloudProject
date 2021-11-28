@@ -13,7 +13,6 @@ public class UserConverter {
         userEntity.setAge(dto.getAge());
         userEntity.setEmail(dto.getEmail());
         userEntity.setPhone(dto.getPhone());
-//        user.setActions(dto.getActions());
         return userEntity;
     }
     public UserDTO toDTO(UserEntity entity) {
@@ -23,7 +22,15 @@ public class UserConverter {
         dto.setAge(entity.getAge());
         dto.setEmail(entity.getEmail());
         dto.setPhone(entity.getPhone());
-//        dto.setActions(entity.getActions());
         return dto;
+    }
+
+    public UserEntity toExistingEntity(UserEntity entity, UserDTO dto) {
+        entity.setFullname(dto.getFullname());
+        entity.setGender(dto.getGender());
+        entity.setAge(dto.getAge());
+        entity.setEmail(dto.getEmail());
+        entity.setPhone(dto.getPhone());
+        return entity;
     }
 }
