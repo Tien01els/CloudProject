@@ -1,16 +1,16 @@
 package com.example.springbootcloud.service;
 
-import com.example.springbootcloud.entity.User;
-import com.example.springbootcloud.model.dto.UserDto;
+import com.example.springbootcloud.entity.UserEntity;
+import com.example.springbootcloud.model.dto.UserDTO;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public interface UserService {
-    public Iterable<User>  getListUser();
-    //        public User getUserById(int id);
-    public UserDto createUser(UserDto user);
-//    public void updateUserById(User user);
-//    public void deleteUserById(int id);
+    Iterable<UserEntity> getListUser();
+    UserDTO createUser(UserDTO userDto);
+    UserDTO updateUser(UserDTO userDto);
+
+    //    public User getUserById(int id);
+    //    public void updateUserById(User user);
+    //    public void deleteUserById(int id);
 }

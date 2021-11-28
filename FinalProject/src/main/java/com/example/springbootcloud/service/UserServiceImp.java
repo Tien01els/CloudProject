@@ -1,8 +1,8 @@
 package com.example.springbootcloud.service;
 
 import com.example.springbootcloud.converter.UserConverter;
-import com.example.springbootcloud.entity.User;
-import com.example.springbootcloud.model.dto.UserDto;
+import com.example.springbootcloud.entity.UserEntity;
+import com.example.springbootcloud.model.dto.UserDTO;
 import com.example.springbootcloud.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,16 +16,23 @@ public class UserServiceImp implements UserService{
     private UserConverter userConverter;
 
     @Override
-    public UserDto createUser(UserDto userDto) {
-        User user = userConverter.toEntity(userDto);
-        user = userRepository.save(user);
-        return userConverter.toDTO(user);
+    public UserDTO createUser(UserDTO userDto) {
+        UserEntity userEntity = userConverter.toEntity(userDto);
+        userEntity = userRepository.save(userEntity);
+        return userConverter.toDTO(userEntity);
     }
+
     @Override
-    public Iterable<User> getListUser() {
-        Iterable<User> user = userRepository.findAll();
-        return user;
+    public UserDTO updateUser(UserDTO userDto) {
+        return null;
     }
+
+    @Override
+    public Iterable<UserEntity> getListUser() {
+        return userRepository.findAll();
+    }
+
+
 
 //    private static ArrayList<User> users = new ArrayList<User>();
 //
