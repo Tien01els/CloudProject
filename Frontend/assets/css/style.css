@@ -1,16 +1,20 @@
 /*Global*/
-.symbols{
+
+.symbols {
     color: red;
 }
-*{
+
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 
+
 /* Top */
-.container #top .menu-bar{
+
+.container #top .menu-bar {
     background-color: #343A40;
     color: white;
     width: 100%;
@@ -18,29 +22,33 @@
     position: absolute;
     top: 0;
 }
-.container #top .menu-bar ul{
+
+.container #top .menu-bar ul {
     list-style: none;
     font-size: 18px;
     font-weight: bold;
 }
-.container #top .menu-bar ul li{
+
+.container #top .menu-bar ul li {
     height: 30px;
     margin: 20px;
     padding: 10px;
 }
 
-.container #top .menu-bar .navi-left li{
+.container #top .menu-bar .navi-left li {
     /* border: 1px solid red; */
-    display: inline;   
+    display: inline;
 }
-.container #top .menu-bar .navi-right li{
+
+.container #top .menu-bar .navi-right li {
     /* border: 1px solid blue; */
     /* margin-right: 50px; */
-    display: inline; 
+    display: inline;
 }
+
 .container #top .menu-bar .navi-left {
     /* border: 1px solid red; */
-    display: inline; 
+    display: inline;
     position: absolute;
     top: 50%;
     left: 0%;
@@ -48,9 +56,10 @@
     width: 570px;
     height: 45px;
 }
+
 .container #top .menu-bar .navi-right {
     /* border: 1px solid red; */
-    display: inline; 
+    display: inline;
     position: absolute;
     top: 50%;
     right: 0%;
@@ -58,34 +67,39 @@
     width: 120px;
     height: 45px;
 }
-.container #top .menu-bar .navi-right .navi-right-container{
+
+.container #top .menu-bar .navi-right .navi-right-container {
     position: absolute;
     top: 50%;
     right: 0%;
     transform: translate(0%, -50%);
 }
 
-.container #top .menu-bar .navi-left .navi-left-container{
+.container #top .menu-bar .navi-left .navi-left-container {
     position: absolute;
     top: 50%;
     left: 0%;
     transform: translate(0%, -50%);
 }
 
-.container #top .menu-bar ul li a{
+.container #top .menu-bar ul li a {
     text-decoration: none;
     color: #fff;
 }
+
+
 /* Mid */
-body{
+
+body {
     background-color: #FFF0E5;
 }
-.container #mid{
+
+.container #mid {
     margin-top: 55px;
-    margin-bottom: 55px;   
+    margin-bottom: 55px;
 }
 
-.container #mid .wrapper{
+.container #mid .wrapper {
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
@@ -95,15 +109,18 @@ body{
     width: 500px;
 }
 
+
 /* Bottom */
-.container #bottom{
-    background-color: #343A40; 
+
+.container #bottom {
+    background-color: #343A40;
     position: absolute;
     bottom: 0;
     height: 55px;
-    width: 100%; 
+    width: 100%;
 }
-.container #bottom h1{
+
+.container #bottom h1 {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -112,27 +129,30 @@ body{
     color: white;
 }
 
+
 /* ------------------------- Add User ------------------------- */
-.container #mid .h1_add{
+
+.container #mid .h1_add {
     padding-top: 50px;
     text-align: center;
     font-weight: bold;
     color: #3A10E5;
 }
-.container #mid .wrapper .content{
+
+.container #mid .wrapper .content {
     padding-left: 47px;
     padding-top: 15px;
     padding-bottom: 15px;
 }
 
-.container #mid .wrapper .content p{
+.container #mid .wrapper .content p {
     padding-top: 5px;
     padding-bottom: 5px;
     font-weight: bold;
     color: #5533FF;
 }
 
-.container #mid .wrapper .content input[type="text"]{
+.container #mid .wrapper .content input[type="text"] {
     border: 1px solid black;
     border-radius: 5px;
     width: 400px;
@@ -140,7 +160,7 @@ body{
     text-indent: 5px;
 }
 
-.container #mid .wrapper .content input[type="submit"]{
+.container #mid .wrapper .content input[type="submit"] {
     border: 1px solid #3A10E5;
     border-radius: 5px;
     width: 120px;
@@ -151,7 +171,7 @@ body{
     font-size: 15px;
 }
 
-.container #mid .wrapper .flex-container{
+.container #mid .wrapper .flex-container {
     /* border: 1px solid red; */
     display: flex;
     flex-wrap: wrap;
@@ -161,38 +181,45 @@ body{
     margin-bottom: -10px;
 }
 
-.container #mid .wrapper .flex-child{
+.container #mid .wrapper .flex-child {
     margin-right: 15px;
 }
 
+
 /* pseudo */
-.container #mid .wrapper .content input[type="submit"]:hover{
+
+.container #mid .wrapper .content input[type="submit"]:hover {
     border: 1px solid #5533FF;
     background-color: #5533FF;
 }
-.container #mid .wrapper .content input[type="text"]:hover{
+
+.container #mid .wrapper .content input[type="text"]:hover {
     border: 1px solid #3A10E5;
 }
 
-.container #mid .wrapper .content input[type="text"]:focus{
+.container #mid .wrapper .content input[type="text"]:focus {
     border: 0px solid #3A10E5;
     outline: 2px solid #3A10E5;
 }
 
+
 /* ------------------------- List ------------------------- */
-.container #mid .wrapper-list #table_userlist thead{
+
+.container #mid .wrapper-list #table_userlist thead {
     background-color: rgb(240, 240, 240);
     height: 35px;
     font-size: 18px;
     color: #5533FF;
 }
-.container #mid .wrapper-list #table_userlist tbody{
+
+.container #mid .wrapper-list #table_userlist tbody {
     background-color: white;
     height: 35px;
     font-size: 16px;
+    border: 1px solid black;
 }
 
-.container #mid .wrapper-list #table_userlist{
+.container #mid .wrapper-list #table_userlist {
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
@@ -201,16 +228,48 @@ body{
     border: 1px solid black;
     text-align: center;
     table-layout: auto;
-    
     box-shadow: 10px 10px #888888;
 }
+
+
 /* table content */
-.container #mid .wrapper-list #table_userlist thead .gender{
+
+#table_userlist thead .gender,
+#table_userlist thead .phone,
+#table_userlist thead .age {
     width: 100px;
 }
-.container #mid .wrapper-list #table_userlist thead .age{
-    width: 100px;
+
+#table_userlist tbody .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    border-top: none;
 }
-.container #mid .wrapper-list #table_userlist thead .phone{
-    width: 200px;
+
+
+/* Table button */
+
+#table_userlist .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+}
+
+#table_userlist .btn:hover {
+    opacity: 0.7;
+}
+
+#table_userlist i {
+    display: block;
+    width: 25px;
+    line-height: 25px;
 }
