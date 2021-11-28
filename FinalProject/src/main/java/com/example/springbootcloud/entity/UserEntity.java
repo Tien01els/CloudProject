@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
-
+import com.example.springbootcloud.entity.UserEntity;
 import javax.persistence.*;
 
 //@Setter
@@ -13,12 +13,12 @@ import javax.persistence.*;
 //@AllArgsConstructor
 //@NoArgsConstructor
 @Component
-@Entity
+@Entity(name = "users")
 @Table(name = "users")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @Column(name = "fullname")
     private String fullname;
@@ -37,10 +37,10 @@ public class UserEntity {
 
 //    private String actions;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

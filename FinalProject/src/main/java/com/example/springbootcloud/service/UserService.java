@@ -9,8 +9,8 @@ public interface UserService {
     Iterable<UserEntity> getListUser();
     UserDTO createUser(UserDTO userDto);
     UserDTO updateUser(UserDTO userDto);
+    void deleteUser(UserDTO userDto);
 
-    //    public User getUserById(int id);
     //    public void updateUserById(User user);
     //    public void deleteUserById(int id);
 }

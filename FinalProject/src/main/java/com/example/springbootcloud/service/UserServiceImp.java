@@ -16,15 +16,24 @@ public class UserServiceImp implements UserService{
     private UserConverter userConverter;
 
     @Override
-    public UserDTO createUser(UserDTO userDto) {
-        UserEntity userEntity = userConverter.toEntity(userDto);
+    public UserDTO createUser(UserDTO userDTO) {
+        UserEntity userEntity = userConverter.toEntity(userDTO);
         userEntity = userRepository.save(userEntity);
         return userConverter.toDTO(userEntity);
     }
 
     @Override
-    public UserDTO updateUser(UserDTO userDto) {
-        return null;
+    public UserDTO updateUser(UserDTO userDTO) {
+        UserEntity existingUser = userRepository.findById(userDTO.getId()).orElse(null);
+        assert existingUser != null;
+        UserEntity userEntity = userConverter.toExistingEntity(existingUser, userDTO);
+        userEntity = userRepository.save(userEntity);
+        return userConverter.toDTO(userEntity);
+    }
+
+    @Override
+    public void deleteUser(UserDTO userDTO) {
+        userRepository.deleteById(userDTO.getId());
     }
 
     @Override
