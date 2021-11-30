@@ -28,7 +28,6 @@ btnAdd.addEventListener("click", (Event) => {
         dataType: 'json',
         headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "http://localhost:8081/users"
         },
         data: requestJSON,
         success: function(data) {

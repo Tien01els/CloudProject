@@ -1,8 +1,6 @@
 const tableUserList = document.querySelector('#table_userlist');
 const tableBodyUserList = tableUserList.querySelector('tbody');
 
-
-
 const table = {
     render: function() {
         $.ajax({
@@ -11,7 +9,6 @@ const table = {
             dataType: 'json',
             headers: {
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "http://localhost:8081/users"
             },
             success: function(data) {
                 const htmls = data.map((user) => {
@@ -126,7 +123,6 @@ const table = {
                                 dataType: 'json',
                                 headers: {
                                     "Content-Type": "application/json",
-                                    "Access-Control-Allow-Origin": "http://localhost:8081/users"
                                 },
                                 data: requestJSONEdit,
                                 success: function(data) {
@@ -148,32 +144,17 @@ const table = {
                         e.preventDefault();
 
                         const trEdit = e.target.parentElement.parentElement.parentElement.parentElement;
-                        console.log(trEdit);
-
-
-                        var Model = {
-                            id: trEdit.dataset.index,
-                            // fullname: trEdit.querySelector(".fullname").innerText,
-                            // gender: trEdit.querySelector(".gender").innerText,
-                            // age: trEdit.querySelector(".age").innerText,
-                            // email: trEdit.querySelector(".email").innerText,
-                            // phone: trEdit.querySelector(".phone").innerText
-                        };
-
-                        console.log(Model);
-                        var requestJSON = JSON.stringify(Model);
+                        var id = trEdit.dataset.index;
 
                         $.ajax({
                             type: 'DELETE',
-                            url: 'http://localhost:8081/users/' + Model.id,
-                            dataType: 'json',
-                            headers: {
-                                "Content-Type": "application/json",
-                                // "Access-Control-Allow-Origin": "http://localhost:8081/users"
-                            },
-                            data: requestJSON,
-                            success: function(data) {
-                                console.log(data);
+                            url: 'http://localhost:8081/users/' + id,
+                            // dataType: 'json',
+                            // headers: {
+                            //     "Content-Type": "application/json",
+                            // },
+                            success: function() {
+                                location.reload();
                             },
                             error: function() {
                                 console.log("The following error occured: ");
@@ -189,5 +170,4 @@ const table = {
 
     }
 }
-
 table.render();

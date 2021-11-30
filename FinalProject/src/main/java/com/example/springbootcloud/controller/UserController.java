@@ -1,10 +1,9 @@
 package com.example.springbootcloud.controller;
 
 import com.example.springbootcloud.model.dto.UserDTO;
-import com.example.springbootcloud.service.UserService;
+import com.example.springbootcloud.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 //import javax.validation.Valid;
 
@@ -29,10 +28,9 @@ public class UserController {
     }
 
     @DeleteMapping ("/{id}")
-    public ResponseEntity<?> deleteUser(@RequestBody UserDTO req, @PathVariable("id") Long id) {
-        req.setId(id);
-        userService.deleteUser(req);
-        return ResponseEntity.ok(req);
+    public String deleteUser(@PathVariable("id") Long id) {
+        userService.deleteUser(id);
+        return "Success";
     }
 
     @GetMapping("")
