@@ -206,7 +206,7 @@ a {
 }
 
 #sidebar .sibebar-scroll {
-    height: 595px;
+    height: 100%;
     position: relative;
     overflow: hidden scroll;
 }
