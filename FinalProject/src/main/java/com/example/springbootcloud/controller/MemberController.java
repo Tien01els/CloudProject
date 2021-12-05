@@ -21,32 +21,17 @@ public class MemberController {
         return ResponseEntity.ok(result);
     }
 
-
-//    public ResponseEntity<?> checkLogin(@RequestBody MemberDTO req){
-//        MemberDTO result = memberService.checkLogin(req);
-//        return ResponseEntity.ok(req);
-//    }
 //    @PostMapping("/login")
 //    public ResponseEntity<?> checkLogin(@RequestBody MemberDTO req){
-//        return ResponseEntity.ok(memberService.checkLogin(req));
+//        HashMap<String, String> check = new HashMap<String, String>();
+//        check.put("key", memberService.checkLogin(req));
+//        return ResponseEntity.ok(check);
 //    }
 
-    @PostMapping("/login")
+    @RequestMapping("")
     public ResponseEntity<?> checkLogin(@RequestBody MemberDTO req){
         HashMap<String, String> check = new HashMap<String, String>();
         check.put("key", memberService.checkLogin(req));
         return ResponseEntity.ok(check);
     }
-
-
-//    @PutMapping("/{id}")
-//    public ResponseEntity<?> updateUser(@RequestBody MemberDTO req, @PathVariable("id") Long id) {
-//        req.setId(id);
-//        return ResponseEntity.ok(req);
-//    }
-//
-//    @DeleteMapping ("/{id}")
-//    public String deleteUser(@PathVariable("id") Long id) {
-//        return "Success";
-//    }
 }

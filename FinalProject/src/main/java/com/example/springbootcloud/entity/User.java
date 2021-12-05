@@ -1,19 +1,37 @@
-package com.example.springbootcloud.model.dto;
+package com.example.springbootcloud.entity;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.stereotype.Component;
 
-public class AbstractDTO<T> {
+import javax.persistence.*;
+
+//@Setter
+//@Getter
+//@AllArgsConstructor
+//@NoArgsConstructor
+@Component
+@Entity(name = "users")
+@Table(name = "users")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String fullname;
-    private String gender;
-    private int age;
-    private String email;
-    private String phone;
-    private List<T> listResult = new ArrayList<>();
 
-    public List<T> getListResult() { return listResult; }
-    public void setListResult(List<T> listResult) { this.listResult = listResult; }
+    @Column(name = "fullname")
+    private String fullname;
+
+    @Column(name = "gender")
+    private String gender;
+
+    @Column(name = "age")
+    private int age;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "phone")
+    private String phone;
+
+//    private String actions;
 
     public Long getId() {
         return id;
@@ -39,15 +57,17 @@ public class AbstractDTO<T> {
         this.age = age;
     }
 
-    public String getEmail() {return email;}
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPhone() {
         return phone;
     }
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

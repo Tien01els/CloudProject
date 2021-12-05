@@ -1,7 +1,7 @@
 package com.example.springbootcloud.service.user;
 
 import com.example.springbootcloud.converter.UserConverter;
-import com.example.springbootcloud.entity.UserEntity;
+import com.example.springbootcloud.entity.User;
 import com.example.springbootcloud.model.dto.UserDTO;
 import com.example.springbootcloud.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,18 +17,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO createUser(UserDTO userDTO) {
-        UserEntity userEntity = userConverter.toEntity(userDTO);
-        userEntity = userRepository.save(userEntity);
-        return userConverter.toDTO(userEntity);
+        User user = userConverter.toEntity(userDTO);
+        user = userRepository.save(user);
+        return userConverter.toDTO(user);
     }
 
     @Override
     public UserDTO updateUser(UserDTO userDTO) {
-        UserEntity existingUser = userRepository.findById(userDTO.getId()).orElse(null);
+        User existingUser = userRepository.findById(userDTO.getId()).orElse(null);
         assert existingUser != null;
-        UserEntity userEntity = userConverter.toExistingEntity(existingUser, userDTO);
-        userEntity = userRepository.save(userEntity);
-        return userConverter.toDTO(userEntity);
+        User user = userConverter.toExistingEntity(existingUser, userDTO);
+        user = userRepository.save(user);
+        return userConverter.toDTO(user);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Iterable<UserEntity> getListUser() {
+    public Iterable<User> getListUser() {
         return userRepository.findAll();
     }
 }
