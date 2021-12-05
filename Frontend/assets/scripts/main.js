@@ -1,19 +1,37 @@
 const btnMenu = document.querySelector('.btn-menu');
-const headerLeft = document.querySelector('.header-left');
 const main = document.querySelector('#main');
-const btnEdits = document.querySelectorAll('.btn-edit');
-const formEdit = document.querySelector('#form-edit');
-const btnCloseForm = document.querySelector('.form-close')
+
 
 btnMenu.onclick = () => {
     main.classList.toggle('mini-sidebar');
 }
 
-btnEdits.forEach(btnEdit => {
-    btnEdit.onclick = () => {
-        formEdit.classList.add('active');
-    }
-})
-btnCloseForm.onclick = () => {
-    formEdit.classList.remove('active');
+
+
+function getObject() {
+    // var valueObjects = Objects.map(Object => ({ Object: Object.value }));
+    $.post("api")
+        .done(function(data) {
+            console.log(data);
+        })
+        .fail(function() {
+            alert("error");
+        })
+        .always(function() {
+            alert("complete");
+        });
+}
+
+function addObject(Objects) {
+    var valueObjects = Objects.map(Object => ({ Object: Object.value }));
+    // $.post("api", {...valueObjects })
+    //     .done(function(data) {
+    //         console.log(data);
+    //     })
+    //     .fail(function() {
+    //         alert("error");
+    //     })
+    //     .always(function() {
+    //         alert("complete");
+    //     });
 }
