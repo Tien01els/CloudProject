@@ -75,7 +75,6 @@
                             <li><a href="ListStudents.html">Student List</a></li>
                             <li><a href="">Student View</a></li>
                             <li><a href="AddStudent.html">Student Add</a></li>
-                            <li><a href="EditStudent.html">Student Edit</a></li>
                         </ul>
                     </li>
                     <li class="main-menu">
@@ -88,7 +87,6 @@
                             <li><a href="ListTeachers.html">Teacher List</a></li>
                             <li><a href="">Teacher View</a></li>
                             <li><a href="AddTeacher.html">Teacher Add</a></li>
-                            <li><a href="EditTeacher.html">Teacher Edit</a></li>
                         </ul>
                     </li>
                     <li class="main-menu">
@@ -125,20 +123,20 @@
                         Basic Details
                     </h3>
                     <div class="col-half form-group">
-                        <label for="" class="form-label">First Name</label>
-                        <input type="text" name="" id="" class="form-input">
+                        <label for="firstname" class="form-label">First Name</label>
+                        <input type="text" name="firstname" id="firstname" class="form-input">
                     </div>
                     <div class="col-half form-group">
-                        <label for="" class="form-label">Last Name</label>
-                        <input type="text" name="" id="" class="form-input">
+                        <label for="lastname" class="form-label">Last Name</label>
+                        <input type="text" name="lastname" id="lastname" class="form-input">
                     </div>
                     <div class="col-half form-group">
-                        <label for="" class="form-label">Teacher id</label>
-                        <input type="text" name="" id="" class="form-input">
+                        <label for="teacher-id" class="form-label">Teacher id</label>
+                        <input type="text" name="teacher_id" id="teacher-id" class="form-input">
                     </div>
                     <div class="col-half form-group">
-                        <label for="" class="form-label">Gender</label>
-                        <select name="" id="" class="form-input">
+                        <label for="gender" class="form-label">Gender</label>
+                        <select name="gender" id="gender" class="form-input">
                             <option value="">Select Gender</option>
                             <option value="Female">Female</option>
                             <option value="Male">Male</option>
@@ -146,12 +144,12 @@
                         </select>
                     </div>
                     <div class="col-half form-group">
-                        <label for="" class="form-label">Date of Birth</label>
-                        <input type="date" name="" id="" class="form-input">
+                        <label for="birth" class="form-label">Date of Birth</label>
+                        <input type="date" name="birth" id="birth" class="form-input">
                     </div>
                     <div class="col-half form-group">
-                        <label for="" class="form-label">Phone Number</label>
-                        <input type="text" name="" id="" class="form-input">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="text" name="phone" id="phone" class="form-input">
                     </div>
                     <h3 class="form-title">
                         Login Details
@@ -184,6 +182,8 @@
         </div>
 
     </div>
+    <script src="./assets/scripts/main.js"></script>
+    <script src="./assets/scripts/AddContent.js"></script>
 </body>
 
 </html>
