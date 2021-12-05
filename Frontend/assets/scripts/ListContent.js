@@ -10,3 +10,18 @@ btnEdits.forEach(btnEdit => {
 btnCloseForm.onclick = () => {
     formEdit.classList.remove('active');
 }
+
+function getObject() {
+    const api = "http://localhost:8081/student/";
+    // var valueObjects = Objects.map(Object => ({ Object: Object.value }));
+    $.post("api")
+        .done(function(data) {
+            console.log(data);
+        })
+        .fail(function() {
+            alert("error");
+        })
+        .always(function() {
+            alert("complete");
+        });
+}
