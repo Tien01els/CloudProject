@@ -4,11 +4,11 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 
 @Component
-@Entity(name = "Member")
+@Entity(name="Member")
 @Table(name = "Member")
-public class MemberEntity {
+public class Member {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "username")

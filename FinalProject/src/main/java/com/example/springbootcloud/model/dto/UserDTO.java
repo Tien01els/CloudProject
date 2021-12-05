@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 //@AllArgsConstructor
 //@NoArgsConstructor
 @Component
-public class UserDTO extends AbstractDTO<UserDTO>{
+public class UserDTO {
     private Long id;
     private String fullname;
     private String gender;

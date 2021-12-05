@@ -1,21 +1,19 @@
 package com.example.springbootcloud.converter;
 
-import com.example.springbootcloud.entity.MemberEntity;
-import com.example.springbootcloud.entity.UserEntity;
+import com.example.springbootcloud.entity.Member;
 import com.example.springbootcloud.model.dto.MemberDTO;
-import com.example.springbootcloud.model.dto.UserDTO;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MemberConverter {
-    public MemberEntity toEntity(MemberDTO dto) {
-        MemberEntity entity = new MemberEntity();
+    public Member toEntity(MemberDTO dto) {
+        Member entity = new Member();
         entity.setUsername(dto.getUsername());
         entity.setPassword(dto.getPassword());
         entity.setEmail(dto.getEmail());
         return entity;
     }
-    public MemberDTO toDTO(MemberEntity entity) {
+    public MemberDTO toDTO(Member entity) {
         MemberDTO dto = new MemberDTO();
         dto.setUsername(entity.getUsername());
         dto.setPassword(entity.getPassword());
