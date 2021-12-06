@@ -71,7 +71,7 @@ public class AccountController {
     public ResponseEntity<?> getUserrole(){
         HashMap<String, String> result = new HashMap<String, String>();
         if(GlobalVariable.UserRole != null){
-            result.put("key", Long.toString(GlobalVariable.IDuser));
+            result.put("key", GlobalVariable.UserRole);
         }else{
             result.put("key", "Fail");
         }

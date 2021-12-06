@@ -1,4 +1,4 @@
-import getId from './UserGlobal.js';
+import getId from './GetIdUser.js';
 
 getId()
     .then(data => data.key);
