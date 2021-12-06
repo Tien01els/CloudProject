@@ -9,4 +9,5 @@ import org.springframework.stereotype.Service;
 public interface AccountService {
     AccountDTO createAccount(AccountDTO accountDTO);
     Iterable<Account> getListAccount();
+    String checkLogin(AccountDTO accountDTO);
 }

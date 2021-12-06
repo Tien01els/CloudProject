@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+
 @RestController
 @RequestMapping(value = "/account")
 public class AccountController {
@@ -34,5 +36,12 @@ public class AccountController {
         AccountDTO result = accountService.createAccount(req);
         StudentDTO studentDTO = studentService.createStudent(result.getAccount_id());
         return ResponseEntity.ok(studentDTO);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> checkLogin(@RequestBody AccountDTO req){
+        HashMap<String, String> check = new HashMap<String, String>();
+        check.put("key", accountService.checkLogin(req));
+        return ResponseEntity.ok(check);
     }
 }

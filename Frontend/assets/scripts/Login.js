@@ -21,7 +21,7 @@ btnAdd.addEventListener("click", (Event) => {
 
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:8081/member/login',
+        url: 'http://localhost:8081/account/login',
         dataType: 'json',
         headers: {
             "Content-Type": "application/json",

@@ -26,4 +26,11 @@ public class AccountServiceImpl implements AccountService{
     public Iterable<Account> getListAccount() {
         return accountRepository.findAll();
     }
+
+    @Override
+    public String checkLogin(AccountDTO accountDTO){
+        Account account = accountRepository.findByUsernameAndPassword(accountDTO.getUsername(), accountDTO.getPassword());
+        if(account != null){return "Success";};
+        return "Fail";
+    }
 }
