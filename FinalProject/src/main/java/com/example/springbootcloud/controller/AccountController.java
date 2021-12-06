@@ -45,7 +45,7 @@ public class AccountController {
         return ResponseEntity.ok(check);
     }
 
-    @PostMapping("/getAccid")
+    @GetMapping("/getAccid")
     public ResponseEntity<?> getAccid(){
         HashMap<String, String> result = new HashMap<String, String>();
         if(GlobalVariable.IDaccount != -1L){
@@ -56,7 +56,7 @@ public class AccountController {
         return ResponseEntity.ok(result);
     }
 
-    @PostMapping("/getUserid")
+    @GetMapping("/getUserid")
     public ResponseEntity<?> getUserid(){
         HashMap<String, String> result = new HashMap<String, String>();
         if(GlobalVariable.IDuser != -1L){
@@ -67,7 +67,7 @@ public class AccountController {
         return ResponseEntity.ok(result);
     }
 
-    @PostMapping("/getUserrole")
+    @GetMapping("/getUserrole")
     public ResponseEntity<?> getUserrole(){
         HashMap<String, String> result = new HashMap<String, String>();
         if(GlobalVariable.UserRole != null){

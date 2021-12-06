@@ -6,6 +6,7 @@ function getRole() {
     }
 }
 
+
 const btnAdd = document.getElementById("btn_login");
 btnAdd.addEventListener("click", (Event) => {
     Event.preventDefault();
@@ -16,7 +17,7 @@ btnAdd.addEventListener("click", (Event) => {
         role: getRole()
     };
 
-    console.log("testvalue: " + Model);
+    console.log(Model.username);
     var requestJSON = JSON.stringify(Model);
 
     $.ajax({
@@ -29,9 +30,9 @@ btnAdd.addEventListener("click", (Event) => {
         data: requestJSON,
         success: function(data) {
             // location.href = "Login.html";
-            console.log(data);
-            if (data.key == "Success")
-                window.location.href = "./OldFE/HomePage.html";
+            if (data.key == "Success") {
+                window.location.href = "Dashboard.html";
+            }
         },
         error: function() {
             console.log("The following error occured: ");
