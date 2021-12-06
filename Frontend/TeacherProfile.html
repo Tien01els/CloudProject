@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
-    <title>Edit Students</title>
+    <title>Add Students</title>
 </head>
 
 <body>
@@ -74,7 +75,6 @@
                             <li><a href="ListStudents.html">Student List</a></li>
                             <li><a href="">Student View</a></li>
                             <li><a href="AddStudent.html">Student Add</a></li>
-                            <li><a href="EditStudent.html">Student Edit</a></li>
                         </ul>
                     </li>
                     <li class="main-menu">
@@ -86,8 +86,7 @@
                         <ul class="sub-menu">
                             <li><a href="ListTeachers.html">Teacher List</a></li>
                             <li><a href="">Teacher View</a></li>
-                            <li><a href="AddTeacher.html">Teacher Add</a></li>
-                            <li><a href="EditTeacher.html">Teacher Edit</a></li>
+                            <li><a href="TeacherProfile.html">Teacher Profile</a></li>
                         </ul>
                     </li>
                     <li class="main-menu">
@@ -97,9 +96,8 @@
                             <i class="menu-arrow ri-arrow-down-s-line"></i>
                         </div>
                         <ul class="sub-menu">
-                            <li><a href="">Subject List</a></li>
-                            <li><a href="">Subject Add</a></li>
-                            <li><a href="">Subject Edit</a></li>
+                            <li><a href="ListSubjects.html">Subject List</a></li>
+                            <li><a href="AddSubject.html">Subject Add</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -108,13 +106,13 @@
         <div id="container">
             <div class="page-header">
                 <div class="col">
-                    <h3 class="page-title">Edit Students</h3>
+                    <h3 class="page-title">Add Teachers</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-items">
-                            Students/
+                            Teachers/
                         </li>
                         <li class="breadcrumb-items">
-                            Edit Students
+                            Add Teachers
                         </li>
                     </ul>
                 </div>
@@ -122,23 +120,23 @@
             <div class="page-body">
                 <form action="" class="row">
                     <h3 class="form-title">
-                        Student Information
+                        Basic Details
                     </h3>
                     <div class="col-half form-group">
-                        <label for="" class="form-label">First Name</label>
-                        <input type="text" name="" id="" class="form-input">
+                        <label for="firstname" class="form-label">First Name</label>
+                        <input type="text" name="firstname" id="firstname" class="form-input">
                     </div>
                     <div class="col-half form-group">
-                        <label for="" class="form-label">Last Name</label>
-                        <input type="text" name="" id="" class="form-input">
+                        <label for="lastname" class="form-label">Last Name</label>
+                        <input type="text" name="lastname" id="lastname" class="form-input">
                     </div>
                     <div class="col-half form-group">
-                        <label for="" class="form-label">Student id</label>
-                        <input type="text" name="" id="" class="form-input">
+                        <label for="teacher-id" class="form-label">Teacher id</label>
+                        <input type="text" name="teacher_id" id="teacher-id" class="form-input">
                     </div>
                     <div class="col-half form-group">
-                        <label for="" class="form-label">Gender</label>
-                        <select name="" id="" class="form-input">
+                        <label for="gender" class="form-label">Gender</label>
+                        <select name="gender" id="gender" class="form-input">
                             <option value="">Select Gender</option>
                             <option value="Female">Female</option>
                             <option value="Male">Male</option>
@@ -146,17 +144,42 @@
                         </select>
                     </div>
                     <div class="col-half form-group">
-                        <label for="" class="form-label">Date of Birth</label>
-                        <input type="date" name="" id="" class="form-input">
+                        <label for="birth" class="form-label">Date of Birth</label>
+                        <input type="date" name="birth" id="birth" class="form-input">
                     </div>
                     <div class="col-half form-group">
-                        <label for="" class="form-label">Phone Number</label>
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="text" name="phone" id="phone" class="form-input">
+                    </div>
+                    <h3 class="form-title">
+                        Login Details
+                    </h3>
+                    <div class="col-half form-group">
+                        <label for="" class="form-label">Username</label>
                         <input type="text" name="" id="" class="form-input">
                     </div>
-                    <button type="submit" class="btn btn-submit">
-                        Submit
-                    </button>
+                    <div class="col-half form-group">
+                        <label for="" class="form-label">Email</label>
+                        <input type="text" name="" id="" class="form-input">
+                    </div>
+                    <div class="col-half form-group">
+                        <label for="" class="form-label">Password</label>
+                        <input type="text" name="" id="" class="form-input">
+                    </div>
+                    <div class="col-half form-group">
+                        <label for="" class="form-label">Repeat Password</label>
+                        <input type="text" name="" id="" class="form-input">
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-submit">
+                            Submit
+                        </button>
+                        <button class="btn btn-reset">
+                            Reset
+                        </button>
+                    </div>
                 </form>
+
             </div>
         </div>
         <div id="footer">
@@ -164,6 +187,8 @@
         </div>
 
     </div>
+    <script src="./assets/scripts/main.js"></script>
+    <script src="./assets/scripts/AddContent.js"></script>
 </body>
 
 </html>
