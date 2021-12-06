@@ -1,5 +1,5 @@
-function checkpass(){
-    if(document.getElementById("id_pass").value !== document.getElementById("id_repass").value){
+function checkpass() {
+    if (document.getElementById("id_pass").value !== document.getElementById("id_repass").value) {
         alert("Password does not match!!!");
         return false;
     }
@@ -17,7 +17,7 @@ const btnAdd = document.getElementById("btn_register");
 btnAdd.addEventListener("click", (Event) => {
     Event.preventDefault();
 
-    if(checkpass() == false)
+    if (checkpass() == false)
         return;
 
     var Model = {
@@ -33,14 +33,14 @@ btnAdd.addEventListener("click", (Event) => {
 
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:8081/member',
+        url: 'http://localhost:8081/account/' + Model.role,
         dataType: 'json',
         headers: {
             "Content-Type": "application/json",
         },
         data: requestJSON,
         success: function(data) {
-            location.reload();
+            location.href = "Login.html";
         },
         error: function() {
             console.log("The following error occured: ");
