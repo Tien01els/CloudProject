@@ -29,6 +29,13 @@ public class TeacherServiceImpl implements TeacherService{
     }
 
     @Override
+    public TeacherDTO getTeacherById(Long id){
+        Teacher teacher = teacherRepository.findTeacherByAccountId(id);
+        assert teacher != null;
+        return teacherConverter.toDTO(teacher);
+    }
+
+    @Override
     public TeacherDTO updateTeacher(TeacherDTO teacherDTO){
         Teacher existingTeacher = teacherRepository.findById(teacherDTO.getTeacher_id()).orElse(null);
         assert existingTeacher != null;
