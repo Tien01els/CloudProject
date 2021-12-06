@@ -30,7 +30,7 @@ btnAdd.addEventListener("click", (Event) => {
         success: function(data) {
             // location.href = "Login.html";
             console.log(data);
-            if(data.key == "Success")
+            if (data.key == "Success")
                 window.location.href = "./OldFE/HomePage.html";
         },
         error: function() {

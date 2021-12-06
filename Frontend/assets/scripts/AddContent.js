@@ -13,10 +13,15 @@ btnSubmit.onclick = (e) => {
 }
 
 
-function addObjects(Objects) {
+function addObjects(data) {
     const api = "http://localhost:8081/student/";
-    console.log(Objects);
-    // $.post("api", Objects)
+    console.log(data);
+    // $.post({
+    //         type: 'PUT',
+    //         url: api,
+    //         contentType: 'application/json',
+    //         data: JSON.stringify(data), // access in body
+    //     })
     //     .done(function(data) {
     //         console.log(data);
     //     })
