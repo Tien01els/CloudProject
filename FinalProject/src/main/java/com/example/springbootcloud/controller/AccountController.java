@@ -40,8 +40,7 @@ public class AccountController {
 
     @PostMapping("/login")
     public ResponseEntity<?> checkLogin(@RequestBody AccountDTO req){
-        HashMap<String, String> check = new HashMap<String, String>();
-        check.put("key", accountService.checkLogin(req));
+        HashMap<String, String> check = accountService.checkLogin(req);
         return ResponseEntity.ok(check);
     }
 }
