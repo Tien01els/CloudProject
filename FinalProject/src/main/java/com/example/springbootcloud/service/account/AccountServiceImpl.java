@@ -6,6 +6,7 @@ import com.example.springbootcloud.converter.TeacherConverter;
 import com.example.springbootcloud.entity.Account;
 import com.example.springbootcloud.entity.Student;
 import com.example.springbootcloud.entity.Teacher;
+import com.example.springbootcloud.global.GlobalVariable;
 import com.example.springbootcloud.model.dto.AccountDTO;
 import com.example.springbootcloud.repositories.AccountRepository;
 import com.example.springbootcloud.repositories.StudentRepository;
@@ -56,12 +57,17 @@ public class AccountServiceImpl implements AccountService{
 
         if(account != null){
             result.put("accid", Long.toString(account.getAccount_id()));
+            GlobalVariable.IDaccount = account.getAccount_id();
+            GlobalVariable.UserRole = account.getRole();
             if(Objects.equals(account.getRole(), "student")){
                 Student student = studentRepository.findStudentByAccountId(account.getAccount_id());
                 result.put("userid", Long.toString(student.getStudent_id()));
+                GlobalVariable.IDuser = student.getStudent_id();
+
             }else if(Objects.equals(account.getRole(), "teacher")){
                 Teacher teacher = teacherRepository.findTeacherByAccountId(account.getAccount_id());
                 result.put("userid", Long.toString(teacher.getTeacher_id()));
+                GlobalVariable.IDuser = teacher.getTeacher_id();
             }
             result.put("key", "Success");
             return result;

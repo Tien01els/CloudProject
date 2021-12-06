@@ -1,5 +1,6 @@
 package com.example.springbootcloud.controller;
 
+import com.example.springbootcloud.global.GlobalVariable;
 import com.example.springbootcloud.model.dto.AccountDTO;
 import com.example.springbootcloud.model.dto.StudentDTO;
 import com.example.springbootcloud.model.dto.TeacherDTO;
@@ -42,5 +43,38 @@ public class AccountController {
     public ResponseEntity<?> checkLogin(@RequestBody AccountDTO req){
         HashMap<String, String> check = accountService.checkLogin(req);
         return ResponseEntity.ok(check);
+    }
+
+    @PostMapping("/getAccid")
+    public ResponseEntity<?> getAccid(){
+        HashMap<String, String> result = new HashMap<String, String>();
+        if(GlobalVariable.IDaccount != -1L){
+            result.put("key", Long.toString(GlobalVariable.IDaccount));
+        }else {
+            result.put("key", "Fail");
+        }
+        return ResponseEntity.ok(result);
+    }
+
+    @PostMapping("/getUserid")
+    public ResponseEntity<?> getUserid(){
+        HashMap<String, String> result = new HashMap<String, String>();
+        if(GlobalVariable.IDuser != -1L){
+            result.put("key", Long.toString(GlobalVariable.IDuser));
+        }else{
+            result.put("key", "Fail");
+        }
+        return ResponseEntity.ok(result);
+    }
+
+    @PostMapping("/getUserrole")
+    public ResponseEntity<?> getUserrole(){
+        HashMap<String, String> result = new HashMap<String, String>();
+        if(GlobalVariable.UserRole != null){
+            result.put("key", Long.toString(GlobalVariable.IDuser));
+        }else{
+            result.put("key", "Fail");
+        }
+        return ResponseEntity.ok(result);
     }
 }
