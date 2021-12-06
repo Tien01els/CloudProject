@@ -55,13 +55,13 @@ public class AccountServiceImpl implements AccountService{
         HashMap<String, String> result = new HashMap<String, String>();
 
         if(account != null){
-            result.put("key_account_id", Long.toString(account.getAccount_id()));
+            result.put("accid", Long.toString(account.getAccount_id()));
             if(Objects.equals(account.getRole(), "student")){
                 Student student = studentRepository.findStudentByAccountId(account.getAccount_id());
-                result.put("key_student_id", Long.toString(student.getStudent_id()));
+                result.put("userid", Long.toString(student.getStudent_id()));
             }else if(Objects.equals(account.getRole(), "teacher")){
                 Teacher teacher = teacherRepository.findTeacherByAccountId(account.getAccount_id());
-                result.put("key_teacher_id", Long.toString(teacher.getTeacher_id()));
+                result.put("userid", Long.toString(teacher.getTeacher_id()));
             }
             result.put("key", "Success");
             return result;
