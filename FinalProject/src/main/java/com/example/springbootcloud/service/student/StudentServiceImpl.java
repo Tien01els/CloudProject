@@ -3,7 +3,6 @@ package com.example.springbootcloud.service.student;
 import com.example.springbootcloud.converter.StudentConverter;
 import com.example.springbootcloud.entity.Student;
 import com.example.springbootcloud.model.dto.StudentDTO;
-import com.example.springbootcloud.model.dto.TeacherDTO;
 import com.example.springbootcloud.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

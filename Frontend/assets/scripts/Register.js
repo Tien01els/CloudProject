@@ -23,9 +23,8 @@ btnAdd.addEventListener("click", (Event) => {
     var Model = {
         // id: "",
         username: document.getElementById("id_user").value,
-        email: document.getElementById("id_email").value,
-        role: getRole(),
         password: document.getElementById("id_pass").value,
+        role: getRole(),
     };
 
     console.log("testvalue: " + Model);
@@ -33,7 +32,7 @@ btnAdd.addEventListener("click", (Event) => {
 
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:8081/account/' + Model.role,
+        url: 'http://localhost:8081/account/' + getRole(),
         dataType: 'json',
         headers: {
             "Content-Type": "application/json",
