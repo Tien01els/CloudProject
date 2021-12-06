@@ -27,6 +27,13 @@ public class StudentServiceImpl implements StudentService{
     public Iterable<Student> getListStudent(){return studentRepository.findAll();};
 
     @Override
+    public StudentDTO getStudentByID(Long id){
+        Student student = studentRepository.findStudentByAccountId(id);
+        assert student != null;
+        return studentConverter.toDTO(student);
+    }
+
+    @Override
     public StudentDTO updateStudent(StudentDTO studentDTO){
         Student existingStudent = studentRepository.findById(studentDTO.getStudent_id()).orElse(null);
         assert existingStudent != null;
@@ -34,6 +41,7 @@ public class StudentServiceImpl implements StudentService{
         student = studentRepository.save(student);
         return studentConverter.toDTO(student);
     }
+
 
     @Override
     public void deleteStudent(Long id){

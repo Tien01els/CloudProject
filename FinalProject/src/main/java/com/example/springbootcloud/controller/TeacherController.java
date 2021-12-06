@@ -1,5 +1,7 @@
 package com.example.springbootcloud.controller;
 
+import com.example.springbootcloud.entity.Student;
+import com.example.springbootcloud.entity.Teacher;
 import com.example.springbootcloud.model.dto.TeacherDTO;
 import com.example.springbootcloud.service.teacher.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,12 @@ public class TeacherController {
     public ResponseEntity<?> updateTeacher(@RequestBody TeacherDTO req, @PathVariable("id") Long id){
         req.setTeacher_id(id);
         TeacherDTO result = teacherService.updateTeacher(req);
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getTeacherById(@PathVariable("id") Long id) {
+        TeacherDTO result = teacherService.getTeacherById(id);
         return ResponseEntity.ok(result);
     }
 

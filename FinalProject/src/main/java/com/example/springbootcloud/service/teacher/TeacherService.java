@@ -10,4 +10,5 @@ public interface TeacherService {
     Iterable<Teacher> getListTeacher();
     TeacherDTO updateTeacher(TeacherDTO teacherDTO);
     void deleteTeacher(Long id);
+    TeacherDTO getTeacherById(Long id);
 }
