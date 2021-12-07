@@ -46,7 +46,7 @@ public class AccountController {
     }
 
     @GetMapping("/getGlobalId")
-    public ResponseEntity<?> getAccid(){
+    public ResponseEntity<?> getGlobalid(){
         HashMap<String, String> result = new HashMap<String, String>();
         if(GlobalVariable.IDaccount != -1L && GlobalVariable.IDuser != -1L && GlobalVariable.UserRole != null){
             result.put("key", "Success");
@@ -57,5 +57,12 @@ public class AccountController {
             result.put("key", "Fail");
         }
         return ResponseEntity.ok(result);
+    }
+
+    @DeleteMapping("deleteGlobalId")
+    public void deleteGlobalId(){
+        GlobalVariable.IDaccount = -1L;
+        GlobalVariable.IDuser = -1L;
+        GlobalVariable.UserRole = null;
     }
 }
