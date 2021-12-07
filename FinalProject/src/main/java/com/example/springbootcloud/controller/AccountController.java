@@ -45,34 +45,15 @@ public class AccountController {
         return ResponseEntity.ok(check);
     }
 
-    @GetMapping("/getAccid")
+    @GetMapping("/getGlobalId")
     public ResponseEntity<?> getAccid(){
         HashMap<String, String> result = new HashMap<String, String>();
-        if(GlobalVariable.IDaccount != -1L){
-            result.put("key", Long.toString(GlobalVariable.IDaccount));
+        if(GlobalVariable.IDaccount != -1L && GlobalVariable.IDuser != -1L && GlobalVariable.UserRole != null){
+            result.put("key", "Success");
+            result.put("key_accid", Long.toString(GlobalVariable.IDaccount));
+            result.put("key_userid", Long.toString(GlobalVariable.IDuser));
+            result.put("key_userrole", GlobalVariable.UserRole);
         }else {
-            result.put("key", "Fail");
-        }
-        return ResponseEntity.ok(result);
-    }
-
-    @GetMapping("/getUserid")
-    public ResponseEntity<?> getUserid(){
-        HashMap<String, String> result = new HashMap<String, String>();
-        if(GlobalVariable.IDuser != -1L){
-            result.put("key", Long.toString(GlobalVariable.IDuser));
-        }else{
-            result.put("key", "Fail");
-        }
-        return ResponseEntity.ok(result);
-    }
-
-    @GetMapping("/getUserrole")
-    public ResponseEntity<?> getUserrole(){
-        HashMap<String, String> result = new HashMap<String, String>();
-        if(GlobalVariable.UserRole != null){
-            result.put("key", GlobalVariable.UserRole);
-        }else{
             result.put("key", "Fail");
         }
         return ResponseEntity.ok(result);

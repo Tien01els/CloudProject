@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 public class CourseDTO {
     private Long course_id;
     private String name;
-    private String teacherid;
+    private Long teacher_id;
 
     public Long getCourse_id() {
         return course_id;
@@ -24,11 +24,11 @@ public class CourseDTO {
         this.name = name;
     }
 
-    public String getTeacherid() {
-        return teacherid;
+    public Long getTeacher_id() {
+        return teacher_id;
     }
 
-    public void setTeacherid(String teacherid) {
-        this.teacherid = teacherid;
+    public void setTeacher_id(Long teacher_id) {
+        this.teacher_id = teacher_id;
     }
 }

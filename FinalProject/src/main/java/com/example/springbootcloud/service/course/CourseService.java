@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface CourseService {
-//    CourseDTO createCourse(Long account_id);
+    CourseDTO createCourse(CourseDTO courseDTO);
 //    Iterable<Course> getListCourse();
-//    CourseDTO updateCourse(CourseDTO courseDTO);
-//    void deleteCourse(Long id);
+    CourseDTO updateCourse(CourseDTO courseDTO);
+    void deleteCourse(Long id);
 }
