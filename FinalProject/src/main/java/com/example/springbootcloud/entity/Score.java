@@ -15,4 +15,20 @@ public class Score implements java.io.Serializable {
 
     @Column(name = "scores")
     private String scores;
+
+    public ScoreKey getId() {
+        return id;
+    }
+
+    public void setId(ScoreKey id) {
+        this.id = id;
+    }
+
+    public String getScores() {
+        return scores;
+    }
+
+    public void setScores(String scores) {
+        this.scores = scores;
+    }
 }

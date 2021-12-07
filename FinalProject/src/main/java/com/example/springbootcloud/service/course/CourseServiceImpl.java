@@ -7,6 +7,9 @@ import com.example.springbootcloud.repositories.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class CourseServiceImpl implements CourseService{
     @Autowired
@@ -32,13 +35,20 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public void deleteCourse(Long id) {
-
+    public List<CourseDTO> selectCourseByTeacherId(Long teacher_id){
+        List<Course> courses = courseRepository.findCourseByTeacher_id(teacher_id);
+        List<CourseDTO> coursesDTO = new ArrayList<CourseDTO>();
+        for (Course cours : courses) {
+            coursesDTO.add(courseConverter.toDTO(cours));
+        }
+        return coursesDTO;
     }
 
-//    @Autowired
-//    private CourseService ;
+    @Override
+    public void deleteCourse(CourseDTO courseDTO) {
+        courseRepository.deleteCourseByCourse_idAndTeacher_id(courseDTO.getCourse_id(), courseDTO.getTeacher_id());
+    }
 
-//    @Override
-//    public CourseDTO createCourse(Lo)
+    @Override
+    public Iterable<Course> getListCourse(){return courseRepository.findAll();}
 }
