@@ -22,18 +22,6 @@ public class CourseConverter {
         return dto;
     }
 
-//    public Course toEntity_name(CourseDTO dto){
-//        Course course = new Course();
-//        course.setName(dto.getName());
-//        return course;
-//    }
-//
-//    public CourseDTO toDTO_name(Course entity){
-//        CourseDTO dto = new CourseDTO();
-//        dto.setName(entity.getName());
-//        return dto;
-//    }
-
     public Course toExistingEntity(Course entity, CourseDTO dto){
         entity.setName(dto.getName());
         return entity;
