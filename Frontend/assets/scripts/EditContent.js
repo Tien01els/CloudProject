@@ -12,20 +12,15 @@ btnSubmit.onclick = (e) => {
             [input.getAttribute('name')]: input.value
         });
     });
-    addObjects(value);
+    editObjects(value);
 }
 
-function addObjects(data) {
+function editObjects(data) {
     getUser()
-        .then(idUser => {
-            Object.assign(data, {
-                teacher_id: idUser.key_userid
-            });
-            const api = URL + '/' + data.hidden;
-            delete data.hidden;
-            console.log(data);
+        .then(user => {
+            const api = URL + '/' + user.key_userrole + '/' + user.key_userid;
             $.ajax({
-                    type: 'POST',
+                    type: 'PUT',
                     url: api,
                     contentType: 'application/json',
                     data: JSON.stringify(data), // access in body
@@ -37,4 +32,23 @@ function addObjects(data) {
                     console.log("error");
                 })
         });
+
 }
+
+getUser()
+    .then(user => {
+        const api = URL + '/' + user.key_userrole + '/' + user.key_userid;
+        $.ajax({
+                type: 'GET',
+                url: api,
+                contentType: 'application/json'
+            })
+            .done(function(data) {
+                inputs.forEach(input => {
+                    input.value = data[input.getAttribute('name')]
+                });
+            })
+            .fail(function() {
+                console.log("error");
+            })
+    });

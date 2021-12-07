@@ -1,3 +1,5 @@
+import { URL } from './URL.js';
+
 function getRole() {
     var ele = document.getElementsByName("role");
     for (let i = 0; i < ele.length; ++i) {
@@ -22,7 +24,7 @@ btnAdd.addEventListener("click", (Event) => {
 
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:8081/account/login',
+        url: URL + '/account/login',
         dataType: 'json',
         headers: {
             "Content-Type": "application/json",

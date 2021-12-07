@@ -92,12 +92,12 @@
                     <li class="main-menu">
                         <div>
                             <i class="ri-contacts-book-2-line"></i>
-                            <span>Subjects</span>
+                            <span>Courses</span>
                             <i class="menu-arrow ri-arrow-down-s-line"></i>
                         </div>
                         <ul class="sub-menu">
-                            <li><a href="ListSubjects.html">Subject List</a></li>
-                            <li><a href="ProfileSubject.html">Subject Profile</a></li>
+                            <li><a href="ListCourses.html">Course List</a></li>
+                            <li><a href="ProfileCourse.html">Course Profile</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -106,13 +106,14 @@
         <div id="container">
             <div class="page-header">
                 <div class="col">
-                    <h3 class="page-title">List Students</h3>
+                    <h3 class="page-title">List Courses</h3>
                     <ul class="breadcrumb">
+                        <input type="hidden" value="course">
                         <li class="breadcrumb-items">
-                            Students/
+                            Courses/
                         </li>
                         <li class="breadcrumb-items">
-                            List Students
+                            List Courses
                         </li>
                     </ul>
                 </div>
@@ -120,43 +121,14 @@
             <div class="page-body">
                 <div class="row">
                     <h3 class="form-title">
-                        Show Students
+                        Show Courses
                     </h3>
                     <table>
                         <tr>
                             <th>Course ID</th>
                             <th>Course Name</th>
-                            <th>Class</th>
                             <th>Teacher ID</th>
                             <th>Actions</th>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Course Name</td>
-                            <td>qewqeqw</td>
-                            <td>2</td>
-                            <td>
-                                <button class="btn btn-edit">
-                                    <i class="ri-pencil-fill"></i>
-                                </button>
-                                <button class="btn btn-delete">
-                                    <i class="ri-delete-bin-4-fill"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Course Name</td>
-                            <td>Course x</td>
-                            <td>3</td>
-                            <td>
-                                <button class="btn btn-edit">
-                                    <i class="ri-pencil-fill"></i>
-                                </button>
-                                <button class="btn btn-delete">
-                                    <i class="ri-delete-bin-4-fill"></i>
-                                </button>
-                            </td>
                         </tr>
                     </table>
                 </div>
@@ -204,8 +176,8 @@
     </div>
 
     <script type="module" src="./assets/scripts/main.js"></script>
-    <script src="./assets/scripts/ListContent.js"></script>
-    <script src="./assets/scripts/AddContent.js"></script>
+    <script type="module" src="./assets/scripts/ListContent.js"></script>
+    <script type="module" src="./assets/scripts/EditContent.js"></script>
 </body>
 
 </html>

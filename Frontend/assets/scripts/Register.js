@@ -1,3 +1,5 @@
+import { URL } from './URL.js';
+
 function checkpass() {
     if (document.getElementById("id_pass").value !== document.getElementById("id_repass").value) {
         alert("Password does not match!!!");
@@ -21,7 +23,6 @@ btnAdd.addEventListener("click", (Event) => {
         return;
 
     var Model = {
-        // id: "",
         username: document.getElementById("id_user").value,
         password: document.getElementById("id_pass").value,
         role: getRole(),
@@ -32,7 +33,7 @@ btnAdd.addEventListener("click", (Event) => {
 
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:8081/account/' + getRole(),
+        url: URL + '/account/' + getRole(),
         dataType: 'json',
         headers: {
             "Content-Type": "application/json",

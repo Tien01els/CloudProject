@@ -92,12 +92,12 @@
                     <li class="main-menu">
                         <div>
                             <i class="ri-contacts-book-2-line"></i>
-                            <span>Subjects</span>
+                            <span>Courses</span>
                             <i class="menu-arrow ri-arrow-down-s-line"></i>
                         </div>
                         <ul class="sub-menu">
-                            <li><a href="ListSubjects.html">Subject List</a></li>
-                            <li><a href="ProfileSubject.html">Subject Profile</a></li>
+                            <li><a href="ListCourses.html">Course List</a></li>
+                            <li><a href="ProfileCourse.html">Course Profile</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -108,6 +108,7 @@
                 <div class="col">
                     <h3 class="page-title">List Teachers</h3>
                     <ul class="breadcrumb">
+                        <input type="hidden" value="teacher">
                         <li class="breadcrumb-items">
                             Teachers/
                         </li>
@@ -132,40 +133,6 @@
                             <th>Phone Number</th>
                             <th>Email</th>
                             <th>Actions</th>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>First Name ewqeqweqw</td>
-                            <td>Last Name qewqeqw</td>
-                            <td>Female</td>
-                            <td>Date of Birtd</td>
-                            <td>Phone Number</td>
-                            <td>Email</td>
-                            <td>
-                                <button class="btn btn-edit">
-                                    <i class="ri-pencil-fill"></i>
-                                </button>
-                                <button class="btn btn-delete">
-                                    <i class="ri-delete-bin-4-fill"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>ID</td>
-                            <td>First Name</td>
-                            <td>Last Name</td>
-                            <td>Male</td>
-                            <td>Date of Birtd</td>
-                            <td>Phone Number</td>
-                            <td>Email</td>
-                            <td>
-                                <button class="btn btn-edit">
-                                    <i class="ri-pencil-fill"></i>
-                                </button>
-                                <button class="btn btn-delete">
-                                    <i class="ri-delete-bin-4-fill"></i>
-                                </button>
-                            </td>
                         </tr>
                     </table>
                 </div>
@@ -228,8 +195,8 @@
     </div>
 
     <script type="module" src="./assets/scripts/main.js"></script>
-    <script src="./assets/scripts/ListContent.js"></script>
-    <script src="./assets/scripts/AddContent.js"></script>
+    <script type="module" src="./assets/scripts/ListContent.js"></script>
+    <script type="module" src="./assets/scripts/EditContent.js"></script>
 </body>
 
 </html>
