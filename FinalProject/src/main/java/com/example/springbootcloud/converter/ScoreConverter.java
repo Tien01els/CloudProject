@@ -1,6 +1,7 @@
 package com.example.springbootcloud.converter;
 
 import com.example.springbootcloud.entity.Score;
+import com.example.springbootcloud.entity.key.ScoreKey;
 import com.example.springbootcloud.model.dto.ScoreDTO;
 import org.springframework.stereotype.Component;
 
@@ -8,8 +9,10 @@ import org.springframework.stereotype.Component;
 public class ScoreConverter {
     public Score toEntity(ScoreDTO dto){
         Score score = new Score();
-        score.getId().setCourse_id(dto.getCourse_id());
-        score.getId().setStudent_id(dto.getStudent_id());
+        ScoreKey id = new ScoreKey();
+        id.setCourse_id(dto.getCourse_id());
+        id.setStudent_id(dto.getStudent_id());
+        score.setId(id);
         score.setScores(dto.getScores());
         return score;
     }
