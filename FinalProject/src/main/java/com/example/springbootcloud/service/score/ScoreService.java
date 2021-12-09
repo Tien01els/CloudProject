@@ -13,4 +13,6 @@ public interface ScoreService {
     ScoreDTO updateScore(ScoreDTO scoreDTO);
     void deleteScore(ScoreDTO scoreDTO);
     ArrayList<HashMap<String, String>> getCourseRegistered(Long student_id);
+    String checkRegister(ScoreDTO scoreDTO);
+    ArrayList<HashMap<String, String>> getListStudentByCourseId(Long course_id);
 }

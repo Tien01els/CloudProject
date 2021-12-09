@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 public class CourseConverter {
     public Course toEntity(CourseDTO dto){
         Course course = new Course();
-//        course.setCourse_id(dto.getCourse_id());
         course.setName(dto.getName());
         course.setTeacher_id(dto.getTeacher_id());
         return course;
@@ -16,7 +15,6 @@ public class CourseConverter {
 
     public CourseDTO toDTO(Course entity){
         CourseDTO dto = new CourseDTO();
-//        dto.setCourse_id(entity.getCourse_id());
         dto.setName(entity.getName());
         dto.setTeacher_id(entity.getTeacher_id());
         return dto;

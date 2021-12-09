@@ -16,16 +16,37 @@ public class ScoreController {
     @Autowired
     private ScoreService scoreService;
 
+    //Khi student đăng kí môn học nào đó thì sẽ vào sroce với tham số điểm = null
     @PostMapping("")
     public ResponseEntity<?> createScore(@RequestBody ScoreDTO req){
         ScoreDTO result = scoreService.createScore(req);
         return ResponseEntity.ok(result);
     }
 
+    //Check xem student đã đăng kí môn học đó chưa
+    @GetMapping("")
+    public String checkRegister(@RequestBody ScoreDTO req){
+        return scoreService.checkRegister(req);
+    }
+
+    //Lấy ra tất cả các khóa học student đó đã đăng kí
     @GetMapping("/{id}")
-    public ResponseEntity<?> getScore(@PathVariable("id") Long id){
+    public ResponseEntity<?> getCourseRegistered(@PathVariable("id") Long id){
         ArrayList<HashMap<String, String>> result = scoreService.getCourseRegistered(id);
         return ResponseEntity.ok(result);
-//        return null;
+    }
+
+    //student hủy đăng kí khóa học
+    @DeleteMapping("")
+    public String deleteScore(@RequestBody ScoreDTO req){
+        scoreService.deleteScore(req);
+        return "Delete Successfully";
+    }
+
+    //in ra danh sách student của môn học đó
+    @GetMapping("/course/{id}")
+    public ResponseEntity<?> getListStudentByCourse(@PathVariable("id") Long id){
+        ArrayList<HashMap<String, String>> result = scoreService.getListStudentByCourseId(id);
+        return ResponseEntity.ok(result);
     }
 }
