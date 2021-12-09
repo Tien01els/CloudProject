@@ -16,9 +16,8 @@ public interface ScoreRepository extends CrudRepository<Score, Long> {
     void deleteScoreByCourseIdAndStudentId(Long course_id, Long student_id);
 
     @Query("SELECT b, a FROM score a, course b WHERE a.id.course_id = b.course_id and a.id.student_id = ?1")
-//    @Query("SELECT b.course_id,  b.name, a.scores FROM score a, course b WHERE a.id.course_id = b.course_id and a.id.student_id = ?1 and b.course_id = ?2")
     List<Object[]> selectCourseRegistered(Long student_id);
 
-    @Query("SELECT u FROM score u WHERE u.id.student_id =?1")
-    List<Score> findAllScoreByStudentId(Long student_id);
+    @Query("SELECT a, b FROM score a, student b WHERE a.id.course_id = ?1 and a.id.student_id = b.student_id")
+    List<Object[]> selectStudentListByCourseId(Long course_id);
 }

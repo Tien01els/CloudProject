@@ -3,6 +3,7 @@ package com.example.springbootcloud.service.score;
 import com.example.springbootcloud.converter.ScoreConverter;
 import com.example.springbootcloud.entity.Course;
 import com.example.springbootcloud.entity.Score;
+import com.example.springbootcloud.entity.Student;
 import com.example.springbootcloud.model.dto.CourseDTO;
 import com.example.springbootcloud.model.dto.ScoreDTO;
 import com.example.springbootcloud.repositories.ScoreRepository;
@@ -37,6 +38,17 @@ public class ScoreServiceImpl implements ScoreService{
     }
 
     @Override
+    public String checkRegister(ScoreDTO scoreDTO){
+        Score existingScore = scoreRepository.findScoreByCourseIdAndStudentId(scoreDTO.getCourse_id(), scoreDTO.getStudent_id());
+//        assert existingScore != null;
+        if(existingScore != null){
+            return "Registered";
+        }else{
+            return "Unregistered";
+        }
+    }
+
+    @Override
     public void deleteScore(ScoreDTO scoreDTO){
         scoreRepository.deleteScoreByCourseIdAndStudentId(scoreDTO.getCourse_id(), scoreDTO.getStudent_id());
     }
@@ -44,10 +56,7 @@ public class ScoreServiceImpl implements ScoreService{
     @Override
     public ArrayList<HashMap<String, String>> getCourseRegistered(Long student_id){
         List<Object[]> list = scoreRepository.selectCourseRegistered(student_id);
-
         ArrayList<HashMap<String, String>> temp = new ArrayList<>();
-//        HashMap<String, String> map = new HashMap<>();
-//        List<Score> listScore = scoreRepository.findAllScoreByStudentId(student_id);
 
         for(int i = 0; i < list.size(); ++i){
             HashMap<String, String> map = new HashMap<>();
@@ -59,5 +68,27 @@ public class ScoreServiceImpl implements ScoreService{
             temp.add(map);
         }
         return temp;
+    }
+
+    @Override
+    public ArrayList<HashMap<String, String>> getListStudentByCourseId(Long course_id){
+        List<Object[]> list = scoreRepository.selectStudentListByCourseId(course_id);
+        ArrayList<HashMap<String, String>> result = new ArrayList<>();
+        for(int i = 0; i < list.size(); ++i){
+            HashMap<String, String> map = new HashMap<>();
+            Student student = (Student) list.get(i)[0];
+            map.put("student_id", Long.toString(student.getStudent_id()));
+            map.put("firstname", student.getFirstname());
+            map.put("lastname", student.getLastname());
+            map.put("email", student.getEmail());
+            map.put("birth", student.getBirth());
+            map.put("gender", student.getGender());
+
+            Score score = (Score) list.get(i)[1];
+            map.put("scores", score.getScores());
+
+            result.add(map);
+        }
+        return result;
     }
 }
