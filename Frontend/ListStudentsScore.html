@@ -42,21 +42,6 @@
                             <!-- <img src="" alt=""> -->
                             <i class="ri-user-3-line"></i>
                             <i class="menu-arrow ri-arrow-down-s-line"></i>
-                            <ul class="subnav-user">
-                                <li class="subnav-header">
-                                    <i class="ri-user-3-line"></i>
-                                    <div class="user-text">
-                                        <span>Kamen</span>
-                                        <span>Rider</span>
-                                    </div>
-                                </li>
-                                <li class="btn btn-profile subnav-items">
-                                    <a href="">My profile</a>
-                                </li>
-                                <li class="btn btn-logout subnav-items">
-                                    Logout
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -115,38 +100,47 @@
                             <li><a href="ProfileCourse.html">Course Profile</a></li>
                         </ul>
                     </li>
-                    <li class="main-menu">
-                        <div>
-                            <i class="ri-contacts-book-2-line"></i>
-                            <span>Score</span>
-                            <i class="menu-arrow ri-arrow-down-s-line"></i>
-                        </div>
-                        <ul class="sub-menu">
-                            <li><a href="ListScore.html">Score List</a></li>
-                        </ul>
-                    </li>
                 </ul>
             </div>
         </div>
         <div id="container">
             <div class="page-header">
                 <div class="col">
-                    <h3 class="page-title">Welcome Admin!</h3>
+                    <h3 class="page-title">List Scores</h3>
                     <ul class="breadcrumb">
+                        <input type="hidden" value="score">
                         <li class="breadcrumb-items">
-                            Dashboard
+                            Scores/
+                        </li>
+                        <li class="breadcrumb-items">
+                            List Scores
                         </li>
                     </ul>
                 </div>
             </div>
+            <div class="page-body">
+                <div class="row">
+                    <h3 class="form-title">
+                        Show Scores
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>Course ID</th>
+                            <th>Course Name</th>
+                            <th>Score</th>
+                            <th>Result</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
         <div id="footer">
-
+            <span>Copyright © </span>
         </div>
-
     </div>
-</body>
 
-<script type="module" src="./assets/scripts/main.js"></script>
+    <script type="module" src="./assets/scripts/main.js"></script>
+    <script type="module" src="./assets/scripts/ListContent.js"></script>
+</body>
 
 </html>
