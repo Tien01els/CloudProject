@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -23,7 +24,10 @@ public class CourseController {
     }
 
     @GetMapping("")
-    public ResponseEntity<?> getListCourse(){return ResponseEntity.ok(courseService.getListCourse());}
+    public ResponseEntity<?> getListCourse(){
+        ArrayList<HashMap<String, String>> result = courseService.getListCourse();
+        return ResponseEntity.ok(result);
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getCourseByTeacherId(@PathVariable("id") Long teacher_id){

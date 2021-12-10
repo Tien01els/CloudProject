@@ -18,4 +18,7 @@ public interface CourseRepository extends CrudRepository<Course, Long> {
 
     @Query("SELECT u FROM course u WHERE u.teacher_id = ?1")
     List<Course> findCourseByTeacher_id(Long teacher_id);
+
+    @Query("SELECT a, b FROM course a , teacher b WHERE a.teacher_id = b.teacher_id")
+    List<Object[]> findAllCourseAndHaveTeacherName();
 }
