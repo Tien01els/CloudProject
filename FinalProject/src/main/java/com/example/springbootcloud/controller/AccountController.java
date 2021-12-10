@@ -60,9 +60,12 @@ public class AccountController {
     }
 
     @DeleteMapping("deleteGlobalId")
-    public void deleteGlobalId(){
+    public ResponseEntity<?> deleteGlobalId(){
         GlobalVariable.IDaccount = -1L;
         GlobalVariable.IDuser = -1L;
         GlobalVariable.UserRole = null;
+        HashMap<String, String> result = new HashMap<String, String>();
+        result.put("key", "Success");
+        return ResponseEntity.ok(result);
     }
 }

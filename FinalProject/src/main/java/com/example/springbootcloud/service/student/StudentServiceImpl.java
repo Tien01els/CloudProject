@@ -28,7 +28,7 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public StudentDTO getStudentByID(Long id){
-        Student student = studentRepository.findStudentByAccountId(id);
+        Student student = studentRepository.findStudentByStudentId(id);
         assert student != null;
         return studentConverter.toDTO(student);
     }

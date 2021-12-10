@@ -32,7 +32,7 @@ public class TeacherServiceImpl implements TeacherService{
 
     @Override
     public TeacherDTO getTeacherById(Long id){
-        Teacher teacher = teacherRepository.findTeacherByAccountId(id);
+        Teacher teacher = teacherRepository.findTeacherByTeacherId(id);
         assert teacher != null;
         return teacherConverter.toDTO(teacher);
     }
