@@ -4,6 +4,7 @@ import { URL } from './URL.js';
 const btnSubmit = document.querySelector('.btn-submit');
 const inputs = document.querySelectorAll('.form-input');
 
+
 btnSubmit.onclick = (e) => {
     e.preventDefault();
     var value = {};
@@ -18,7 +19,8 @@ btnSubmit.onclick = (e) => {
 function editObjects(data) {
     getUser()
         .then(user => {
-            const api = URL + '/' + user.key_userrole + '/' + user.key_userid;
+            let api;
+            api = URL + '/' + user.key_userrole + '/' + user.key_userid;
             $.ajax({
                     type: 'PUT',
                     url: api,
