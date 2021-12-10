@@ -2,12 +2,14 @@ package com.example.springbootcloud.service.course;
 
 import com.example.springbootcloud.converter.CourseConverter;
 import com.example.springbootcloud.entity.Course;
+import com.example.springbootcloud.entity.Teacher;
 import com.example.springbootcloud.model.dto.CourseDTO;
 import com.example.springbootcloud.repositories.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Component
@@ -50,5 +52,20 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public Iterable<Course> getListCourse(){return courseRepository.findAll();}
+    public ArrayList<HashMap<String, String>> getListCourse(){
+        List<Object[]> list = courseRepository.findAllCourseAndHaveTeacherName();
+        ArrayList<HashMap<String, String>> result = new ArrayList<>();
+        for(int i = 0; i < list.size(); ++i) {
+            HashMap<String, String> map = new HashMap<>();
+            Course course = (Course) list.get(i)[0];
+            map.put("course_id", Long.toString(course.getCourse_id()));
+            map.put("name", course.getName());
+
+            Teacher teacher = (Teacher) list.get(i)[1];
+            map.put("teacher_name", teacher.getFirstname() + " " + teacher.getLastname());
+
+            result.add(map);
+        }
+        return result;
+    }
 }
