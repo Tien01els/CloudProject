@@ -76,7 +76,12 @@ public class ScoreServiceImpl implements ScoreService{
         ArrayList<HashMap<String, String>> result = new ArrayList<>();
         for(int i = 0; i < list.size(); ++i){
             HashMap<String, String> map = new HashMap<>();
-            Student student = (Student) list.get(i)[0];
+
+            Score score = (Score) list.get(i)[0];
+            map.put("scores", score.getScores());
+
+
+            Student student = (Student) list.get(i)[1];
             map.put("student_id", Long.toString(student.getStudent_id()));
             map.put("firstname", student.getFirstname());
             map.put("lastname", student.getLastname());
@@ -84,8 +89,7 @@ public class ScoreServiceImpl implements ScoreService{
             map.put("birth", student.getBirth());
             map.put("gender", student.getGender());
 
-            Score score = (Score) list.get(i)[1];
-            map.put("scores", score.getScores());
+
 
             result.add(map);
         }
