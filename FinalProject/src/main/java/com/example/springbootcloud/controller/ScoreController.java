@@ -24,7 +24,7 @@ public class ScoreController {
     }
 
     //Check xem student đã đăng kí môn học đó chưa
-    @GetMapping("")
+    @PostMapping("/check")
     public String checkRegister(@RequestBody ScoreDTO req){
         return scoreService.checkRegister(req);
     }
