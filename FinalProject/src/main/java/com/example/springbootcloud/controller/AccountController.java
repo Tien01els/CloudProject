@@ -25,6 +25,7 @@ public class AccountController {
     @Autowired
     private StudentService studentService;
 
+    //Tạo tài khoản dưới role = teacher
     @PostMapping("/teacher")
     public ResponseEntity<?> createAccountTeacher(@RequestBody AccountDTO req){
         AccountDTO result = accountService.createAccount(req);
@@ -32,6 +33,7 @@ public class AccountController {
         return ResponseEntity.ok(teacherDTO);
     }
 
+    //Tạo tài khoản dưới role = Student
     @PostMapping("/student")
     public ResponseEntity<?> createAccountStudent(@RequestBody AccountDTO req){
         AccountDTO result = accountService.createAccount(req);
@@ -39,12 +41,39 @@ public class AccountController {
         return ResponseEntity.ok(studentDTO);
     }
 
+    //Lấy thông tin account = accid ra cho user xem
+    @GetMapping("/{accid}")
+    public ResponseEntity<?> getInfoAccount(@PathVariable("accid") Long id){
+        AccountDTO result = accountService.getAccountById(id);
+        return ResponseEntity.ok(result);
+    }
+
+    //Kiểm tra xem old password đúng hay không
+    @PostMapping("/checkOldPass")
+    public ResponseEntity<?> checkOldPassword(@RequestBody AccountDTO accountDTO){
+        HashMap<String, String> result = new HashMap<>();
+        result.put("key", accountService.checkOldPassword(accountDTO));
+        return ResponseEntity.ok(result);
+    }
+
+    //Update tài khoản theo account id
+    @PutMapping("/update")
+    public ResponseEntity<?> updateAccount(@RequestBody AccountDTO req){
+        accountService.updateAccountById(req);
+        HashMap<String, String> result = new HashMap<>();
+        result.put("key", "Success");
+        return ResponseEntity.ok(result);
+    }
+
+    //Đăng nhập
     @PostMapping("/login")
     public ResponseEntity<?> checkLogin(@RequestBody AccountDTO req){
         HashMap<String, String> check = accountService.checkLogin(req);
         return ResponseEntity.ok(check);
     }
 
+
+    //Global ID
     @GetMapping("/getGlobalId")
     public ResponseEntity<?> getGlobalid(){
         HashMap<String, String> result = new HashMap<String, String>();

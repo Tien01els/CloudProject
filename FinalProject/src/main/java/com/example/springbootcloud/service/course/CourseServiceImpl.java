@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class CourseServiceImpl implements CourseService{
@@ -48,12 +49,16 @@ public class CourseServiceImpl implements CourseService{
 
     @Override
     public void deleteCourse(CourseDTO courseDTO) {
-        courseRepository.deleteCourseByCourse_idAndTeacher_id(courseDTO.getCourse_id(), courseDTO.getTeacher_id());
+        Course course = courseConverter.toEntity(courseDTO);
+        courseRepository.delete(course);
     }
 
     @Override
-    public ArrayList<HashMap<String, String>> getListCourse(){
+    public ArrayList<HashMap<String, String>> getListCourse(String command, Long id){
         List<Object[]> list = courseRepository.findAllCourseAndHaveTeacherName();
+        if(Objects.equals(command, "registered")){
+            list = courseRepository.findAllCourseAndHaveTeacherNameAndRegistered(id);
+        }
         ArrayList<HashMap<String, String>> result = new ArrayList<>();
         for(int i = 0; i < list.size(); ++i) {
             HashMap<String, String> map = new HashMap<>();

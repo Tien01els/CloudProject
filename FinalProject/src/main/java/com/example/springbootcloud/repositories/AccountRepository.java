@@ -9,4 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface AccountRepository extends CrudRepository<Account, Long> {
     @Query("SELECT u FROM account u WHERE u.username = ?1 and u.password = ?2")
     public Account findByUsernameAndPassword(String username, String password);
+
+    @Query("SELECT u FROM account u WHERE u.account_id = ?1")
+    public Account findAccountById(Long account_id);
 }

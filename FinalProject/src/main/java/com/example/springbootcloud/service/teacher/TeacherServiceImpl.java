@@ -46,6 +46,7 @@ public class TeacherServiceImpl implements TeacherService{
         return teacherConverter.toDTO(teacher);
     }
 
+    //Chưa làm - admin
     @Override
     public void deleteTeacher(Long id){
         teacherRepository.deleteById(id);

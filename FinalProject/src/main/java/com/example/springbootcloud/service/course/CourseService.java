@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public interface CourseService {
     CourseDTO createCourse(CourseDTO courseDTO);
-    ArrayList<HashMap<String, String>> getListCourse();
+    ArrayList<HashMap<String, String>> getListCourse(String command, Long id);
     CourseDTO updateCourse(CourseDTO courseDTO);
     void deleteCourse(CourseDTO courseDTO);
     List<CourseDTO> selectCourseByTeacherId(Long teacher_id);

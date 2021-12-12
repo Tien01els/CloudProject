@@ -23,6 +23,15 @@ public class ScoreController {
         return ResponseEntity.ok(result);
     }
 
+    //Nhập điểm cho student của 1 course xác đinh.
+    @PutMapping("")
+    public ResponseEntity<?> updateScore(@RequestBody ArrayList<HashMap<String, String>> req){
+        scoreService.updateScore(req);
+        HashMap<String, String> result = new HashMap<>();
+        result.put("key", "Success");
+        return ResponseEntity.ok(result);
+    }
+
     //Check xem student đã đăng kí môn học đó chưa
     @GetMapping("")
     public String checkRegister(@RequestBody ScoreDTO req){
@@ -38,9 +47,11 @@ public class ScoreController {
 
     //student hủy đăng kí khóa học
     @DeleteMapping("")
-    public String deleteScore(@RequestBody ScoreDTO req){
+    public ResponseEntity<?> deleteScore(@RequestBody ScoreDTO req){
         scoreService.deleteScore(req);
-        return "Delete Successfully";
+        HashMap<String, String> result = new HashMap<>();
+        result.put("key", "Success");
+        return ResponseEntity.ok(result);
     }
 
     //in ra danh sách student của môn học đó

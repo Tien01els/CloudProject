@@ -12,4 +12,7 @@ public interface AccountService {
     AccountDTO createAccount(AccountDTO accountDTO);
     Iterable<Account> getListAccount();
     HashMap<String, String> checkLogin(AccountDTO accountDTO);
+    void updateAccountById(AccountDTO accountDTO);
+    AccountDTO getAccountById(Long account_id);
+    String checkOldPassword(AccountDTO accountDTO);
 }
