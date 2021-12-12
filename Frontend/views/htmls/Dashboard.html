@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
-    <title>Profile Students</title>
+    <title>Add Students</title>
 </head>
 
 <body>
@@ -42,6 +42,21 @@
                             <!-- <img src="" alt=""> -->
                             <i class="ri-user-3-line"></i>
                             <i class="menu-arrow ri-arrow-down-s-line"></i>
+                            <ul class="subnav-user">
+                                <li class="subnav-header">
+                                    <i class="ri-user-3-line"></i>
+                                    <div class="user-text">
+                                        <span>Kamen</span>
+                                        <span>Rider</span>
+                                    </div>
+                                </li>
+                                <li class="btn btn-profile subnav-items">
+                                    <a href="">My profile</a>
+                                </li>
+                                <li class="btn btn-logout subnav-items">
+                                    Logout
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -100,83 +115,29 @@
                             <li><a href="ProfileCourse.html">Course Profile</a></li>
                         </ul>
                     </li>
+                    <li class="main-menu">
+                        <div>
+                            <i class="ri-contacts-book-2-line"></i>
+                            <span>Score</span>
+                            <i class="menu-arrow ri-arrow-down-s-line"></i>
+                        </div>
+                        <ul class="sub-menu">
+                            <li><a href="ListScore.html">Score List</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
         <div id="container">
             <div class="page-header">
                 <div class="col">
-                    <h3 class="page-title">Profile Teachers</h3>
+                    <h3 class="page-title">Welcome Admin!</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-items">
-                            Teachers/
-                        </li>
-                        <li class="breadcrumb-items">
-                            Profile Teachers
+                            Dashboard
                         </li>
                     </ul>
                 </div>
-            </div>
-            <div class="page-body">
-                <form action="" class="row">
-                    <h3 class="form-title">
-                        Basic Details
-                    </h3>
-                    <div class="col-half form-group">
-                        <label for="firstname" class="form-label">First Name</label>
-                        <input type="text" name="firstname" id="firstname" class="form-input">
-                    </div>
-                    <div class="col-half form-group">
-                        <label for="lastname" class="form-label">Last Name</label>
-                        <input type="text" name="lastname" id="lastname" class="form-input">
-                    </div>
-                    <div class="col-half form-group">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="text" name="email" id="email" class="form-input">
-                    </div>
-                    <div class="col-half form-group">
-                        <label for="phone" class="form-label">Phone Number</label>
-                        <input type="text" name="phone" id="phone" class="form-input">
-                    </div>
-                    <div class="col-half form-group">
-                        <label for="gender" class="form-label">Gender</label>
-                        <select name="gender" id="gender" class="form-input">
-                            <option value="">Select Gender</option>
-                            <option value="Female">Female</option>
-                            <option value="Male">Male</option>
-                            <option value="Others">Others</option>
-                        </select>
-                    </div>
-                    <div class="col-half form-group">
-                        <label for="birth" class="form-label">Date of Birth</label>
-                        <input type="date" name="birth" id="birth" class="form-input">
-                    </div>
-                    <h3 class="form-title">
-                        Login Details
-                    </h3>
-                    <div class="col form-group">
-                        <label for="" class="form-label">Username</label>
-                        <input type="text" name="" id="" class="form-input">
-                    </div>
-
-                    <div class="col-half form-group">
-                        <label for="" class="form-label">Password</label>
-                        <input type="text" name="" id="" class="form-input">
-                    </div>
-                    <div class="col-half form-group">
-                        <label for="" class="form-label">Repeat Password</label>
-                        <input type="text" name="" id="" class="form-input">
-                    </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-submit">
-                            Submit
-                        </button>
-                        <button class="btn btn-reset">
-                            Reset
-                        </button>
-                    </div>
-                </form>
-
             </div>
         </div>
         <div id="footer">
@@ -184,9 +145,8 @@
         </div>
 
     </div>
-
-    <script type="module" src="./assets/scripts/main.js"></script>
-    <script type="module" src="./assets/scripts/EditContent.js"></script>
 </body>
+
+<script type="module" src="../../assets/scripts/main.js"></script>
 
 </html>

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
     <title>Add Students</title>
 </head>
@@ -16,7 +16,7 @@
     <div id="main">
         <div id="header">
             <div class="header-left">
-                <a href="Dashboard.html" class="logo">
+                <a href="DashboardStudent.html" class="logo">
                     <i class="icon ri-book-2-fill"></i>
                     <span>Student</span>
                 </a>
@@ -50,10 +50,10 @@
                                         <span>Rider</span>
                                     </div>
                                 </li>
-                                <li class="btn subnav-items">
+                                <li class="btn btn-profile subnav-items">
                                     <a href="ProfileStudent.html">My profile</a>
                                 </li>
-                                <li class="btn subnav-items">
+                                <li class="btn btn-logout subnav-items">
                                     Logout
                                 </li>
                             </ul>
@@ -71,19 +71,19 @@
                     <li class="main-menu">
                         <div>
                             <i class="ri-contacts-book-2-line"></i>
-                            <a href="Dashboard.html">Student Dashboard</a>
+                            <a href="DashboardStudent.html">Student Dashboard</a>
                         </div>
                     </li>
                     <li class="main-menu">
                         <div>
                             <i class="ri-contacts-book-2-line"></i>
-                            <a href="ListCourses.html">Course List</a>
+                            <a href="ListStudentCourses.html">Course List</a>
                         </div>
                     </li>
                     <li class="main-menu">
                         <div>
                             <i class="ri-contacts-book-2-line"></i>
-                            <a href="ListScores.html">Score List</a>
+                            <a href="ListStudentScore.html">Score List</a>
                         </div>
                     </li>
                 </ul>
@@ -92,14 +92,14 @@
         <div id="container">
             <div class="page-header">
                 <div class="col">
-                    <h3 class="page-title">List Students</h3>
+                    <h3 class="page-title">List Scores</h3>
                     <ul class="breadcrumb">
                         <input type="hidden" value="score">
                         <li class="breadcrumb-items">
-                            Students/
+                            Scores/
                         </li>
                         <li class="breadcrumb-items">
-                            List Students
+                            List Scores
                         </li>
                     </ul>
                 </div>
@@ -107,17 +107,14 @@
             <div class="page-body">
                 <div class="row">
                     <h3 class="form-title">
-                        Show Students
+                        Show Scores
                     </h3>
                     <table>
                         <tr>
-                            <th>ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Gender</th>
-                            <th>Date of Birth</th>
-                            <th>Phone Number</th>
-                            <th>Actions</th>
+                            <th>Course ID</th>
+                            <th>Course Name</th>
+                            <th>Score</th>
+                            <th>Result</th>
                         </tr>
                     </table>
                 </div>
@@ -127,61 +124,9 @@
             <span>Copyright © </span>
         </div>
     </div>
-    <div id="form-edit">
-        <div class="edit-container">
-            <form action="" class="row">
-                <div class="form-close">
-                    <i class="ri-close-fill"></i>
-                </div>
-                <h3 class="form-title">
-                    EDIT INFORMATION
-                </h3>
-                <div class="row form-body">
-                    <div class="col-half form-group">
-                        <label for="" class="form-label">First Name</label>
-                        <input type="text" name="" id="" class="form-input">
-                    </div>
-                    <div class="col-half form-group">
-                        <label for="" class="form-label">Last Name</label>
-                        <input type="text" name="" id="" class="form-input">
-                    </div>
-                    <div class="col-half form-group">
-                        <label for="" class="form-label">Student id</label>
-                        <input type="text" name="" id="" class="form-input">
-                    </div>
-                    <div class="col-half form-group">
-                        <label for="" class="form-label">Gender</label>
-                        <select name="" id="" class="form-input">
-                            <option value="">Select Gender</option>
-                            <option value="Female">Female</option>
-                            <option value="Male">Male</option>
-                            <option value="Others">Others</option>
-                        </select>
-                    </div>
-                    <div class="col-half form-group">
-                        <label for="" class="form-label">Date of Birth</label>
-                        <input type="date" name="" id="" class="form-input">
-                    </div>
-                    <div class="col-half form-group">
-                        <label for="" class="form-label">Phone Number</label>
-                        <input type="text" name="" id="" class="form-input">
-                    </div>
-                </div>
-                <div class="col">
-                    <button type="submit" class="btn btn-submit">
-                        Submit
-                    </button>
-                    <button class="btn btn-reset">
-                        Reset
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
 
-    <script type="module" src="./assets/scripts/main.js"></script>
-    <script type="module" src="./assets/scripts/ListContent.js"></script>
-    <script type="module" src="./assets/scripts/EditContent.js"></script>
+    <script type="module" src="../../assets/scripts/main.js"></script>
+    <script type="module" src="../../assets/scripts/ListContent.js"></script>
 </body>
 
 </html>

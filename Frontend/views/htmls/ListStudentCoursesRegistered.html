@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
     <title>Add Students</title>
 </head>
@@ -16,7 +16,7 @@
     <div id="main">
         <div id="header">
             <div class="header-left">
-                <a href="Dashboard.html" class="logo">
+                <a href="DashboardStudent.html" class="logo">
                     <i class="icon ri-book-2-fill"></i>
                     <span>Student</span>
                 </a>
@@ -42,6 +42,21 @@
                             <!-- <img src="" alt=""> -->
                             <i class="ri-user-3-line"></i>
                             <i class="menu-arrow ri-arrow-down-s-line"></i>
+                            <ul class="subnav-user">
+                                <li class="subnav-header">
+                                    <i class="ri-user-3-line"></i>
+                                    <div class="user-text">
+                                        <span>Kamen</span>
+                                        <span>Rider</span>
+                                    </div>
+                                </li>
+                                <li class="btn btn-profile subnav-items">
+                                    <a href="ProfileStudent.html">My profile</a>
+                                </li>
+                                <li class="btn btn-logout subnav-items">
+                                    Logout
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -56,49 +71,20 @@
                     <li class="main-menu">
                         <div>
                             <i class="ri-contacts-book-2-line"></i>
-                            <span>Dashboard</span>
-                            <i class="menu-arrow ri-arrow-down-s-line"></i>
+                            <a href="DashboardStudent.html">Student Dashboard</a>
                         </div>
-                        <ul class="sub-menu">
-                            <li><a href="Dashboard.html">Admin Dashboard</a></li>
-                            <li><a href="">Teacher Dashboard</a></li>
-                            <li><a href="">Student Dashboard</a></li>
-                        </ul>
                     </li>
                     <li class="main-menu">
                         <div>
                             <i class="ri-contacts-book-2-line"></i>
-                            <span>Students</span>
-                            <i class="menu-arrow ri-arrow-down-s-line"></i>
+                            <a href="ListStudentCourses.html">Course List</a>
                         </div>
-                        <ul class="sub-menu">
-                            <li><a href="ListStudents.html">Student List</a></li>
-                            <li><a href="">Student View</a></li>
-                            <li><a href="ProfileStudent.html">Student Profile</a></li>
-                        </ul>
                     </li>
                     <li class="main-menu">
                         <div>
                             <i class="ri-contacts-book-2-line"></i>
-                            <span>Teachers</span>
-                            <i class="menu-arrow ri-arrow-down-s-line"></i>
+                            <a href="ListStudentScore.html">Score List</a>
                         </div>
-                        <ul class="sub-menu">
-                            <li><a href="ListTeachers.html">Teacher List</a></li>
-                            <li><a href="">Teacher View</a></li>
-                            <li><a href="ProfileTeacher.html">Teacher Profile</a></li>
-                        </ul>
-                    </li>
-                    <li class="main-menu">
-                        <div>
-                            <i class="ri-contacts-book-2-line"></i>
-                            <span>Courses</span>
-                            <i class="menu-arrow ri-arrow-down-s-line"></i>
-                        </div>
-                        <ul class="sub-menu">
-                            <li><a href="ListCourses.html">Course List</a></li>
-                            <li><a href="ProfileCourse.html">Course Profile</a></li>
-                        </ul>
                     </li>
                 </ul>
             </div>
@@ -106,14 +92,14 @@
         <div id="container">
             <div class="page-header">
                 <div class="col">
-                    <h3 class="page-title">List Scores</h3>
+                    <h3 class="page-title">List Courses</h3>
                     <ul class="breadcrumb">
-                        <input type="hidden" value="score">
+                        <input type="hidden" id="registered" value="course">
                         <li class="breadcrumb-items">
-                            Scores/
+                            Courses/
                         </li>
                         <li class="breadcrumb-items">
-                            List Scores
+                            List Courses
                         </li>
                     </ul>
                 </div>
@@ -121,14 +107,14 @@
             <div class="page-body">
                 <div class="row">
                     <h3 class="form-title">
-                        Show Scores
+                        Show Courses
                     </h3>
                     <table>
                         <tr>
                             <th>Course ID</th>
                             <th>Course Name</th>
-                            <th>Score</th>
-                            <th>Result</th>
+                            <th>Teacher Name</th>
+                            <th>Actions</th>
                         </tr>
                     </table>
                 </div>
@@ -139,8 +125,8 @@
         </div>
     </div>
 
-    <script type="module" src="./assets/scripts/main.js"></script>
-    <script type="module" src="./assets/scripts/ListContent.js"></script>
+    <script type="module" src="../../assets/scripts/main.js"></script>
+    <script type="module" src="../../assets/scripts/ListContent.js"></script>
 </body>
 
 </html>

@@ -79,7 +79,8 @@ td:last-child {
     justify-content: center;
     align-items: center;
     width: 80px;
-    margin-left: 8px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 ul,
@@ -98,6 +99,10 @@ a {
     right: 4px;
     top: 20px;
     font-weight: 900;
+}
+
+.mt-24 {
+    margin-top: 24px;
 }
 
 ::-webkit-scrollbar {
@@ -124,7 +129,8 @@ a {
 #main.mini-sidebar div>i:last-child,
 #main.mini-sidebar div>span,
 #main.mini-sidebar .menu-title span,
-#main.mini-sidebar li>ul {
+#main.mini-sidebar li>ul,
+#main.mini-sidebar #sidebar a {
     display: none;
 }
 
@@ -497,6 +503,8 @@ a {
     transform: translate(-50%, -50%);
 }
 
+#container .btn-mark,
+#container .btn-check,
 #container .btn-edit {
     background-color: #18aefa;
     color: #fff;
@@ -532,6 +540,17 @@ a {
 
 .edit-container {
     width: 600px;
+    max-width: calc(100% - 32px);
+    min-height: 200px;
+    background: #fff;
+    position: relative;
+    animation: modalFadeIn ease .5s;
+    padding: 16px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.modal-container {
     max-width: calc(100% - 32px);
     min-height: 200px;
     background: #fff;
@@ -580,6 +599,73 @@ a {
 
 .form-close:hover {
     opacity: 0.7;
+}
+
+
+/* Profile */
+
+.profile-header {
+    height: 170px;
+    padding: 24px;
+    background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    border: 1px solid #efefef;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.profile-info {
+    display: flex;
+}
+
+.profile-user-img {
+    display: inline-block;
+    height: 120px;
+    width: 120px;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-right: 16px;
+}
+
+.user-img {
+    height: 120px;
+    width: 120px;
+    background-image: url("https://preschool.dreamguystech.com/html-template/assets/img/profiles/avatar-02.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.profile-user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-grow: 1;
+}
+
+.profile-user-info span {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+.profile-user-info .fullname {
+    font-size: 2.4rem;
+}
+
+.profile-body {
+    height: 200px;
+    border: 1px solid #efefef;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    border-radius: 8px;
+}
+
+.profile-body .profile-info {
+    display: flex;
+    margin: 12px 20px;
+}
+
+.profile-body .profile-info .profile-info-key {
+    width: 160px;
 }
 
 @keyframes modalFadeIn {
