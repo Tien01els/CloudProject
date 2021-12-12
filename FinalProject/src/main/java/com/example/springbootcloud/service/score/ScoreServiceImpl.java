@@ -4,6 +4,7 @@ import com.example.springbootcloud.converter.ScoreConverter;
 import com.example.springbootcloud.entity.Course;
 import com.example.springbootcloud.entity.Score;
 import com.example.springbootcloud.entity.Student;
+import com.example.springbootcloud.entity.key.ScoreKey;
 import com.example.springbootcloud.model.dto.CourseDTO;
 import com.example.springbootcloud.model.dto.ScoreDTO;
 import com.example.springbootcloud.repositories.ScoreRepository;
@@ -28,19 +29,20 @@ public class ScoreServiceImpl implements ScoreService{
         return scoreConverter.toDTO(score);
     }
 
-    @Override
-    public ScoreDTO updateScore(ScoreDTO scoreDTO){
-        Score existingScore = scoreRepository.findScoreByCourseIdAndStudentId(scoreDTO.getCourse_id(), scoreDTO.getStudent_id());
-        assert existingScore != null;
-        Score score = scoreConverter.toExistingEntity(existingScore, scoreDTO);
-        score = scoreRepository.save(score);
-        return scoreConverter.toDTO(score);
-    }
 
+//    @Override
+//    public ScoreDTO updateScore(ScoreDTO scoreDTO){
+//        Score existingScore = scoreRepository.findScoreByCourseIdAndStudentId(scoreDTO.getCourse_id(), scoreDTO.getStudent_id());
+//        assert existingScore != null;
+//        Score score = scoreConverter.toExistingEntity(existingScore, scoreDTO);
+//        score = scoreRepository.save(score);
+//        return scoreConverter.toDTO(score);
+//    }
+
+    //Check xem là course đó student đã đăng kí hay chưa - Student
     @Override
     public String checkRegister(ScoreDTO scoreDTO){
         Score existingScore = scoreRepository.findScoreByCourseIdAndStudentId(scoreDTO.getCourse_id(), scoreDTO.getStudent_id());
-//        assert existingScore != null;
         if(existingScore != null){
             return "Registered";
         }else{
@@ -50,9 +52,24 @@ public class ScoreServiceImpl implements ScoreService{
 
     @Override
     public void deleteScore(ScoreDTO scoreDTO){
-        scoreRepository.deleteScoreByCourseIdAndStudentId(scoreDTO.getCourse_id(), scoreDTO.getStudent_id());
+        Score score = scoreConverter.toEntity(scoreDTO);
+        scoreRepository.delete(score);
+//        scoreRepository.deleteScoreByCourseIdAndStudentId(scoreDTO.getCourse_id(), scoreDTO.getStudent_id());
     }
 
+    //Khi xóa môn học đi thì tất cả score của student trong môn học đó cũng mất.
+    @Override
+    public void deleteAllScoreByCourseId(Long id){
+        List<Score> scores = scoreRepository.findScoreByCourseId(id);
+        if(scores != null){
+            for(int i = 0 ;i < scores.size(); ++i){
+                ScoreDTO scoreDTO = scoreConverter.toDTO(scores.get(i));
+                deleteScore(scoreDTO);
+            }
+        }
+    }
+
+    //In ra danh sách tất cả các course của 1 student - Student
     @Override
     public ArrayList<HashMap<String, String>> getCourseRegistered(Long student_id){
         List<Object[]> list = scoreRepository.selectCourseRegistered(student_id);
@@ -70,6 +87,7 @@ public class ScoreServiceImpl implements ScoreService{
         return temp;
     }
 
+    //In ra danh sách student của 1 course - Teacher
     @Override
     public ArrayList<HashMap<String, String>> getListStudentByCourseId(Long course_id){
         List<Object[]> list = scoreRepository.selectStudentListByCourseId(course_id);
@@ -80,19 +98,30 @@ public class ScoreServiceImpl implements ScoreService{
             Score score = (Score) list.get(i)[0];
             map.put("scores", score.getScores());
 
-
             Student student = (Student) list.get(i)[1];
             map.put("student_id", Long.toString(student.getStudent_id()));
             map.put("firstname", student.getFirstname());
             map.put("lastname", student.getLastname());
             map.put("email", student.getEmail());
+            map.put("phone", student.getPhone());
             map.put("birth", student.getBirth());
             map.put("gender", student.getGender());
-
-
 
             result.add(map);
         }
         return result;
+    }
+
+    @Override
+    public void updateScore(ArrayList<HashMap<String, String>> list){
+        for(int i = 0; i < list.size(); ++i){
+            Score score = new Score();
+            ScoreKey scoreKey = new ScoreKey();
+            scoreKey.setCourse_id(Long.parseLong(list.get(i).get("course_id")));
+            scoreKey.setStudent_id(Long.parseLong(list.get(i).get("student_id")));
+            score.setId(scoreKey);
+            score.setScores(list.get(i).get("scores"));
+            scoreRepository.save(score);
+        }
     }
 }

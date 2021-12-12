@@ -14,11 +14,6 @@ public class TeacherController {
     @Autowired
     private TeacherService teacherService;
 
-//    @PostMapping("")
-//    public ResponseEntity<?> createTeacher(@RequestBody TeacherDTO req){
-//        return ResponseEntity.ok(req);
-//    }
-
     @GetMapping("")
     public ResponseEntity<?> getListTeacher(){
         return ResponseEntity.ok(teacherService.getListTeacher());

@@ -37,6 +37,7 @@ public class AccountServiceImpl implements AccountService{
     @Autowired
     private TeacherConverter teacherConverter;
 
+    //Tạo tài khoản
     @Override
     public AccountDTO createAccount(AccountDTO accountDTO) {
         Account account = accountConverter.toEntity(accountDTO);
@@ -49,6 +50,31 @@ public class AccountServiceImpl implements AccountService{
         return accountRepository.findAll();
     }
 
+    //Lấy ra thông tin của account = id
+    @Override
+    public AccountDTO getAccountById(Long account_id) {
+        Account account = accountRepository.findAccountById(account_id);
+        return accountConverter.toDTO(account);
+    }
+
+    //Check mk cũ có trùng khớp không
+    @Override
+    public String checkOldPassword(AccountDTO accountDTO){
+        Account account = accountRepository.findAccountById(accountDTO.getAccount_id());
+        if(Objects.equals(account.getPassword(), accountDTO.getPassword())){
+            return "Match";
+        }else
+            return "Not Match";
+    }
+
+    //Update thông tin account
+    @Override
+    public void updateAccountById(AccountDTO accountDTO){
+        Account account = accountConverter.toEntity(accountDTO);
+        accountRepository.save(account);
+    }
+
+    //Vừa đăng nhập vào thì kiểm tra xem có account đó không, có thì gán global.
     @Override
     public HashMap<String, String> checkLogin(AccountDTO accountDTO){
         Account account = accountRepository.findByUsernameAndPassword(accountDTO.getUsername(), accountDTO.getPassword());
