@@ -46,8 +46,8 @@
                                 <li class="subnav-header">
                                     <i class="ri-user-3-line"></i>
                                     <div class="user-text">
-                                        <span class="user-name"></span>
-                                        <span class="user-position"></span>
+                                        <span>Admin</span>
+                                        <span class="user-position">admin</span>
                                     </div>
                                 </li>
                                 <li class="btn btn-profile subnav-items">
@@ -109,13 +109,13 @@
         <div id="container">
             <div class="page-header">
                 <div class="col">
-                    <h3 class="page-title">Profile Courses</h3>
+                    <h3 class="page-title">ProfileAccounts</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-items">
-                            Courses/
+                            Accounts/
                         </li>
                         <li class="breadcrumb-items">
-                            Profile Courses
+                            ProfileAccounts
                         </li>
                     </ul>
                 </div>
@@ -126,15 +126,22 @@
                         Account Information
                     </h3>
                     <div class="col-half form-group">
-                        <label for="course" class="form-label">Course Name</label>
-                        <input type="text" name="name" id="course" class="form-input">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" name="username" id="username" class="form-input">
                     </div>
-                    <input type="hidden" name="hidden" id="hidden" class="form-input" value="course">
+                    <div class="col-half form-group">
+                        <label for="gender" class="form-label">Type accout</label>
+                        <select name="list-type" id="list-type" class="form-input">
+                            <option value="">Select List</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="student">Student</option>
+                        </select>
+                    </div>
                     <div class="col">
                         <button type="submit" class="btn btn-submit">
                             Submit
                         </button>
-                        <button class="btn btn-reset">
+                        <button type="reset" class="btn btn-reset">
                             Reset
                         </button>
                     </div>
@@ -147,7 +154,7 @@
     </div>
 
     <script type="module" src="../../assets/scripts/main.js"></script>
-    <script type="module" src="../../assets/scripts/AddContent.js"></script>
+    <script type="module" src="../../assets/scripts/Register.js"></script>
 </body>
 
 </html>

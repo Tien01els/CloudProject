@@ -459,6 +459,15 @@ a {
     border-radius: 8px;
     border: 2px solid #ececf5;
     overflow-x: auto;
+    position: relative;
+}
+
+.page-body .list-type {
+    height: 20px;
+    width: 120px;
+    position: absolute;
+    right: 24px;
+    top: 36px;
 }
 
 .form-title {
@@ -528,6 +537,7 @@ a {
     transform: translate(-50%, -50%);
 }
 
+#container .btn-reset,
 #container .btn-mark,
 #container .btn-check,
 #container .btn-edit {
