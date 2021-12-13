@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @RestController
@@ -72,6 +73,19 @@ public class AccountController {
         return ResponseEntity.ok(check);
     }
 
+    //lấy ra dsách account của student - admin
+    @GetMapping("/studentList")
+    public ResponseEntity<?> getStudentAccountList(){
+        ArrayList<HashMap<String, String>> result = accountService.getStudentAccountList();
+        return ResponseEntity.ok(result);
+    }
+
+    //lấy ra dsách account của teacher - admin
+    @GetMapping("/teacherList")
+    public ResponseEntity<?> getTeacherAccountList(){
+        ArrayList<HashMap<String, String>> result = accountService.getTeacherAccountList();
+        return ResponseEntity.ok(result);
+    }
 
     //Global ID
     @GetMapping("/getGlobalId")
@@ -88,12 +102,31 @@ public class AccountController {
         return ResponseEntity.ok(result);
     }
 
+    //Logout ra thì reset global id
     @DeleteMapping("deleteGlobalId")
     public ResponseEntity<?> deleteGlobalId(){
         GlobalVariable.IDaccount = -1L;
         GlobalVariable.IDuser = -1L;
         GlobalVariable.UserRole = null;
         HashMap<String, String> result = new HashMap<String, String>();
+        result.put("key", "Success");
+        return ResponseEntity.ok(result);
+    }
+
+    //Xóa account của student
+    @DeleteMapping("student/{accid}/{studentid}")
+    public ResponseEntity<?> deleteStudentAccount(@PathVariable("accid") Long account_id, @PathVariable("studentid") Long student_id){
+        accountService.deleteStudentAccount(account_id, student_id);
+        HashMap<String, String> result = new HashMap<>();
+        result.put("key", "Success");
+        return ResponseEntity.ok(result);
+    }
+
+    //Xóa account của teacher
+    @DeleteMapping("teacher/{accid}/{teacherid}")
+    public ResponseEntity<?> deleteTeacherAccount(@PathVariable("accid") Long account_id, @PathVariable("teacherid") Long teacher_id){
+        accountService.deleteTeacherAccount(account_id, teacher_id);
+        HashMap<String, String> result = new HashMap<>();
         result.put("key", "Success");
         return ResponseEntity.ok(result);
     }

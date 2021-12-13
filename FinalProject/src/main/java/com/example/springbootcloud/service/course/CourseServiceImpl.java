@@ -5,6 +5,7 @@ import com.example.springbootcloud.entity.Course;
 import com.example.springbootcloud.entity.Teacher;
 import com.example.springbootcloud.model.dto.CourseDTO;
 import com.example.springbootcloud.repositories.CourseRepository;
+import com.example.springbootcloud.service.score.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +21,9 @@ public class CourseServiceImpl implements CourseService{
 
     @Autowired
     private CourseConverter courseConverter;
+
+    @Autowired
+    private ScoreService scoreService;
 
     @Override
     public CourseDTO createCourse(CourseDTO courseDTO) {
@@ -48,8 +52,9 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public void deleteCourse(CourseDTO courseDTO) {
-        Course course = courseConverter.toEntity(courseDTO);
+    public void deleteCourseByCourseId(Long course_id){
+        scoreService.deleteAllScoreByCourseId(course_id);
+        Course course = courseRepository.findCourseByCourse_id(course_id);
         courseRepository.delete(course);
     }
 
@@ -72,5 +77,17 @@ public class CourseServiceImpl implements CourseService{
             result.add(map);
         }
         return result;
+    }
+
+    @Override
+    public void deleteAllCourseByTeacherId(Long teacher_id) {
+        List<Course> courses = courseRepository.findCourseByTeacher_id(teacher_id);
+        if(courses != null){
+            for(int i = 0 ;i < courses.size(); ++i) {
+                scoreService.deleteAllScoreByCourseId(courses.get(i).getCourse_id());
+                Course course = courseRepository.findCourseByCourse_id(courses.get(i).getCourse_id());
+                courseRepository.delete(course);
+            }
+        }
     }
 }

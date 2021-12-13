@@ -10,11 +10,11 @@ import java.util.List;
 @Service
 public interface ScoreService {
     ScoreDTO createScore(ScoreDTO scoreDTO);
-//    ScoreDTO updateScore(ScoreDTO scoreDTO);
     void deleteScore(ScoreDTO scoreDTO);
     ArrayList<HashMap<String, String>> getCourseRegistered(Long student_id);
     String checkRegister(ScoreDTO scoreDTO);
     ArrayList<HashMap<String, String>> getListStudentByCourseId(Long course_id);
     void deleteAllScoreByCourseId(Long id);
     void updateScore(ArrayList<HashMap<String, String>> list);
+    void deleteAllScoreByStudent_id(Long student_id);
 }

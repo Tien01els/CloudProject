@@ -1,9 +1,7 @@
 package com.example.springbootcloud.controller;
 
-import com.example.springbootcloud.entity.Course;
 import com.example.springbootcloud.model.dto.CourseDTO;
 import com.example.springbootcloud.service.course.CourseService;
-import com.example.springbootcloud.service.score.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +15,6 @@ import java.util.List;
 public class CourseController {
     @Autowired
     private CourseService courseService;
-
-    @Autowired
-    private ScoreService scoreService;
 
     //Tạo course theo id teacher
     @PostMapping("")
@@ -56,11 +51,10 @@ public class CourseController {
         return ResponseEntity.ok(result);
     }
 
-    //Xóa khóa học
-    @DeleteMapping("")
-    public ResponseEntity<?> deleteCourse(@RequestBody CourseDTO req){
-        scoreService.deleteAllScoreByCourseId(req.getCourse_id());
-        courseService.deleteCourse(req);
+    //Xóa khóa học - teacher
+    @DeleteMapping("/{courseid}")
+    public ResponseEntity<?> deleteCourse(@PathVariable("courseid") Long course_id){
+        courseService.deleteCourseByCourseId(course_id);
         HashMap<String, String> result = new HashMap<>();
         result.put("key", "Success");
         return ResponseEntity.ok(result);

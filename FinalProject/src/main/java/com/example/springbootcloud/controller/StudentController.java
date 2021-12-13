@@ -12,11 +12,6 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-//    @PostMapping("")
-//    public ResponseEntity<?> createStudent(@RequestBody StudentDTO req){
-//        return ResponseEntity.ok(req);
-//    }
-
     @PutMapping("/{id}")
     public ResponseEntity<?> updateStudent(@RequestBody StudentDTO req, @PathVariable("id") Long id){
         req.setStudent_id(id);

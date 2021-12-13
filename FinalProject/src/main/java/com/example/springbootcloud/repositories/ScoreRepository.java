@@ -21,4 +21,7 @@ public interface ScoreRepository extends CrudRepository<Score, Long> {
 
     @Query("SELECT u FROM score u WHERE u.id.course_id = ?1")
     List<Score> findScoreByCourseId(Long course_id);
+
+    @Query("SELECT u FROM score u WHERE u.id.student_id = ?1")
+    List<Score> findScoreByStudentId(Long student_id);
 }
