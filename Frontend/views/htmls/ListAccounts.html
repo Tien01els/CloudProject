@@ -46,8 +46,8 @@
                                 <li class="subnav-header">
                                     <i class="ri-user-3-line"></i>
                                     <div class="user-text">
-                                        <span>Kamen</span>
-                                        <span>Rider</span>
+                                        <span class="user-name"></span>
+                                        <span class="user-position"></span>
                                     </div>
                                 </li>
                                 <li class="btn btn-profile subnav-items">
@@ -95,8 +95,13 @@
                     <li class="main-menu">
                         <div>
                             <i class="ri-contacts-book-2-line"></i>
-                            <a href="ListAccount.html">Account List</a>
+                            <span>Account</span>
+                            <i class="menu-arrow ri-arrow-down-s-line"></i>
                         </div>
+                        <ul class="sub-menu">
+                            <li><a href="ListAccounts.html">Account List</a></li>
+                            <li><a href="RegisterAccount.html">Account Register</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -106,7 +111,7 @@
                 <div class="col">
                     <h3 class="page-title">List Accounts</h3>
                     <ul class="breadcrumb">
-                        <input type="hidden" value="account">
+                        <input type="hidden" value="account/teacherList">
                         <li class="breadcrumb-items">
                             Accounts/
                         </li>
@@ -123,7 +128,7 @@
                     </h3>
                     <table>
                         <tr>
-                            <th class='name'>Username</th>
+                            <th class='username'>Username</th>
                             <th class='action'>Actions</th>
                         </tr>
                     </table>
@@ -172,8 +177,8 @@
     </div>
 
     <script type="module" src="../../assets/scripts/main.js"></script>
-    <script type="module" src="../../assets/scripts/ListContent.js"></script>
     <script type="module" src="../../assets/scripts/EditContent.js"></script>
+    <script type="module" src="../../assets/scripts/ListContent.js"></script>
 </body>
 
 </html>

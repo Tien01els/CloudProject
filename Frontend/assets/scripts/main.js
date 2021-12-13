@@ -1,3 +1,4 @@
+import getUser from './GetUser.js';
 import { URL } from './URL.js';
 
 const btnMenu = document.querySelector('.btn-menu');
@@ -45,3 +46,22 @@ if (mainMenus)
                 subMenu.classList.toggle('active');
         }
     })
+
+const username = document.querySelector('.user-name');
+const userPosition = document.querySelector('.user-position');
+
+function getProfile() {
+    getUser()
+        .then(user => {
+            const api = URL + '/' + user.key_userrole + '/' + user.key_userid;
+            $.get(api)
+                .done(function(data) {
+                    username.innerHTML = data.firstname + ' ' + data.lastname;
+                    userPosition.innerHTML = user.key_userrole;
+                })
+                .fail(function() {
+                    console.log("error");
+                })
+        })
+}
+getProfile();

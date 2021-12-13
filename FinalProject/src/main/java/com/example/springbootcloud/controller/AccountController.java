@@ -82,7 +82,7 @@ public class AccountController {
 
     //lấy ra dsách account của teacher - admin
     @GetMapping("/teacherList")
-    public ResponseEntity<?> getTeacherAccountList(){
+    public ResponseEntity<?> getTeacherAccountList(){  
         ArrayList<HashMap<String, String>> result = accountService.getTeacherAccountList();
         return ResponseEntity.ok(result);
     }

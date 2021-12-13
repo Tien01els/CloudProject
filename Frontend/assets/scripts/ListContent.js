@@ -9,6 +9,7 @@ const registered = document.querySelector('input[type="hidden"]').getAttribute('
 const tableBody = document.querySelector('table tbody');
 const tableBodyModal = document.querySelector('.modal-container table tbody');
 
+console.log('hidden: ', type);
 
 if (btnCloseForm != null) {
     btnCloseForm.onclick = () => {
@@ -72,10 +73,10 @@ function getContent() {
                             } else if (user.key_userrole == 'teacher' && type == 'course') {
                                 td.innerHTML = `
                             <td>
-                                <button class="btn btn-mark" data-index=${content.course_id} data-course=${content.name}>
+                                <button class="btn btn-mark" data-index="${content.course_id}" data-course="${content.name}">
                                     <i class="ri-calendar-check-line"></i>
                                 </button>
-                                <button class="btn btn-delete" data-index=${content.course_id}>
+                                <button class="btn btn-delete" data-index="${content.course_id}">
                                     <i class="ri-delete-bin-4-fill"></i>
                                 </button>
                             </td>`
@@ -83,14 +84,14 @@ function getContent() {
                                 if (registered) {
                                     td.innerHTML = `
                                 <td>
-                                    <button class="btn btn-delete" data-index=${content.course_id}>
+                                    <button class="btn btn-delete" data-index="${content.course_id}">
                                         <i class="ri-delete-bin-4-fill"></i>
                                     </button>
                                 </td>`
                                 } else {
                                     td.innerHTML = `
                                 <td>
-                                    <button class="btn btn-edit" data-index=${content.course_id} data-course=${content.name}>
+                                    <button class="btn btn-edit" data-index="${content.course_id}" data-course="${content.name}">
                                         <i class="ri-pencil-fill"></i>
                                     </button>
                                 </td>`
@@ -98,20 +99,20 @@ function getContent() {
                             } else if (user.key_userrole == 'admin' && type == 'account') {
                                 td.innerHTML = `
                                 <td>
-                                    <button class="btn btn-reset" data-index=${content.account_id}>
+                                    <button class="btn btn-reset" data-index="${content.account_id}">
                                         <i class="ri-restart-fill"></i>
                                     </button>
-                                    <button class="btn btn-delete" data-index=${content.account_id}>
+                                    <button class="btn btn-delete" data-index="${content.account_id}">
                                         <i class="ri-delete-bin-4-fill"></i>
                                     </button>
                                 </td>`
                             } else {
                                 td.innerHTML = `
                             <td>
-                                <button class="btn btn-edit" data-index=${content.course_id}>
+                                <button class="btn btn-edit" data-index="${content.course_id}">
                                     <i class="ri-pencil-fill"></i>
                                 </button>
-                                <button class="btn btn-delete" data-index=${content.course_id}>
+                                <button class="btn btn-delete" data-index="${content.course_id}">
                                     <i class="ri-delete-bin-4-fill"></i>
                                 </button>
                             </td>`
@@ -151,7 +152,7 @@ function getContent() {
                                                         data: JSON.stringify(data), // access in body
                                                     })
                                                     .done(contents => {
-                                                        alert('Registered Success');
+                                                        alert('Register Success');
                                                     })
                                             }
 
