@@ -29,16 +29,6 @@ public class ScoreServiceImpl implements ScoreService{
         return scoreConverter.toDTO(score);
     }
 
-
-//    @Override
-//    public ScoreDTO updateScore(ScoreDTO scoreDTO){
-//        Score existingScore = scoreRepository.findScoreByCourseIdAndStudentId(scoreDTO.getCourse_id(), scoreDTO.getStudent_id());
-//        assert existingScore != null;
-//        Score score = scoreConverter.toExistingEntity(existingScore, scoreDTO);
-//        score = scoreRepository.save(score);
-//        return scoreConverter.toDTO(score);
-//    }
-
     //Check xem là course đó student đã đăng kí hay chưa - Student
     @Override
     public String checkRegister(ScoreDTO scoreDTO){
@@ -54,7 +44,18 @@ public class ScoreServiceImpl implements ScoreService{
     public void deleteScore(ScoreDTO scoreDTO){
         Score score = scoreConverter.toEntity(scoreDTO);
         scoreRepository.delete(score);
-//        scoreRepository.deleteScoreByCourseIdAndStudentId(scoreDTO.getCourse_id(), scoreDTO.getStudent_id());
+    }
+
+    //Xóa tất cả các score của student đó
+    @Override
+    public void deleteAllScoreByStudent_id(Long student_id){
+        List<Score> scores = scoreRepository.findScoreByStudentId(student_id);
+        if(scores != null){
+            for(int i = 0 ;i < scores.size(); ++i){
+                ScoreDTO scoreDTO = scoreConverter.toDTO(scores.get(i));
+                deleteScore(scoreDTO);
+            }
+        }
     }
 
     //Khi xóa môn học đi thì tất cả score của student trong môn học đó cũng mất.

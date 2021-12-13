@@ -13,6 +13,7 @@ public interface CourseService {
     CourseDTO createCourse(CourseDTO courseDTO);
     ArrayList<HashMap<String, String>> getListCourse(String command, Long id);
     CourseDTO updateCourse(CourseDTO courseDTO);
-    void deleteCourse(CourseDTO courseDTO);
     List<CourseDTO> selectCourseByTeacherId(Long teacher_id);
+    void deleteAllCourseByTeacherId(Long teacher_id);
+    void deleteCourseByCourseId(Long course_id);
 }
