@@ -118,6 +118,9 @@ public class AccountServiceImpl implements AccountService{
                 Teacher teacher = teacherRepository.findTeacherByAccountId(account.getAccount_id());
                 result.put("userid", Long.toString(teacher.getTeacher_id()));
                 GlobalVariable.IDuser = teacher.getTeacher_id();
+            }else if(Objects.equals(account.getRole(), "admin")){
+                result.put("userid", Long.toString(0L));
+                GlobalVariable.IDuser = 0L;
             }
             result.put("key", "Success");
             return result;
