@@ -144,7 +144,7 @@ public class AccountServiceImpl implements AccountService{
             map.put("password", account.getPassword());
 
             Student student = (Student) list.get(i)[1];
-            map.put("student_id", Long.toString(student.getStudent_id()));
+            map.put("user_id", Long.toString(student.getStudent_id()));
             map.put("firstname", student.getFirstname());
             map.put("lastname", student.getLastname());
             map.put("email", student.getEmail());
@@ -171,7 +171,7 @@ public class AccountServiceImpl implements AccountService{
             map.put("password", account.getPassword());
 
             Teacher teacher = (Teacher) list.get(i)[1];
-            map.put("student_id", Long.toString(teacher.getTeacher_id()));
+            map.put("user_id", Long.toString(teacher.getTeacher_id()));
             map.put("firstname", teacher.getFirstname());
             map.put("lastname", teacher.getLastname());
             map.put("email", teacher.getEmail());
