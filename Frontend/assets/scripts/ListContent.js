@@ -4,12 +4,14 @@ import getUser from './GetUser.js';
 
 const formEdit = document.querySelector('#form-edit');
 const btnCloseForm = document.querySelector('.form-close');
-const type = document.querySelector('input[type="hidden"]').value;
+let type = document.querySelector('input[type="hidden"]').value;
+const typeOriginal = type;
 const registered = document.querySelector('input[type="hidden"]').getAttribute('id');
 const tableBody = document.querySelector('table tbody');
 const tableBodyModal = document.querySelector('.modal-container table tbody');
+const listType = document.querySelector('.list-type');
 
-console.log('hidden: ', type);
+console.log('hidden: ', typeOriginal);
 
 if (btnCloseForm != null) {
     btnCloseForm.onclick = () => {
@@ -96,16 +98,6 @@ function getContent() {
                                     </button>
                                 </td>`
                                 }
-                            } else if (user.key_userrole == 'admin' && type == 'account') {
-                                td.innerHTML = `
-                                <td>
-                                    <button class="btn btn-reset" data-index="${content.account_id}">
-                                        <i class="ri-restart-fill"></i>
-                                    </button>
-                                    <button class="btn btn-delete" data-index="${content.account_id}">
-                                        <i class="ri-delete-bin-4-fill"></i>
-                                    </button>
-                                </td>`
                             } else {
                                 td.innerHTML = `
                             <td>
@@ -117,7 +109,18 @@ function getContent() {
                                 </button>
                             </td>`
                             }
+                        } else if (user.key_userrole == 'admin' && typeOriginal == 'account') {
+                            td.innerHTML = `
+                            <td>
+                                <button class="btn btn-reset" data-index="${content.account_id}" data-user-id="${content.user_id}">
+                                    <i class="ri-restart-fill"></i>
+                                </button>
+                                <button class="btn btn-delete" data-index="${content.account_id}" data-user-id="${content.user_id}">
+                                    <i class="ri-delete-bin-4-fill"></i>
+                                </button>
+                            </td>`
                         }
+                        console.log('role', user.key_userrole);
                         tr.append(td);
                         tableBody.append(tr);
                     });
@@ -213,6 +216,47 @@ function getContent() {
                             }
                         })
                     }
+                    const btnResets = document.querySelectorAll('.btn-reset');
+                    if (btnResets != null) {
+                        btnResets.forEach(btnReset => {
+                            console.log(btnReset);
+                            const courseId = btnReset.getAttribute('data-index');
+                            btnReset.onclick = () => {
+                                api = URL + '/score/course/' + courseId;
+                                console.log(api);
+                                $.get(api)
+                                    .done(function(contents) {
+                                        const ths = document.querySelectorAll('.modal-container th');
+                                        const trs = document.querySelectorAll('.modal-container tr:not(tr:first-child)');
+                                        for (let tr of trs) {
+                                            tr.innerHTML = '';
+                                        }
+                                        contents.forEach(content => {
+                                            let tr = document.createElement('tr');
+
+                                            for (let key of ths) {
+                                                if (key.classList.value != 'scores') {
+                                                    let td = document.createElement('td');
+                                                    td.classList.add(key.classList.value + '-td');
+                                                    td.innerHTML = content[key.classList];
+                                                    tr.append(td);
+                                                }
+                                            }
+                                            let td = document.createElement('td');
+                                            td.innerHTML = `
+                                                <td>
+                                                    <input type="number" id="quantity" class='scores-td' name="quantity" min="0" max="100" value="${content['scores']}">
+                                                </td>`;
+                                            tr.append(td);
+                                            tableBodyModal.append(tr);
+                                        })
+                                    })
+                                    .fail(function() {
+                                        console.log("error");
+                                    })
+                            }
+                        })
+                    }
                     const btnDeletes = document.querySelectorAll('.btn-delete');
                     if (btnDeletes != null) {
                         if (type === 'course' && user.key_userrole == 'student') {
@@ -233,6 +277,27 @@ function getContent() {
                                         })
                                         .done(contents => {
                                             location.reload();
+                                        })
+                                }
+                            })
+                        } else if (user.key_userrole == 'admin') {
+                            btnDeletes.forEach(btnDelete => {
+                                btnDelete.onclick = () => {
+                                    const accountId = btnDelete.getAttribute('data-index');
+                                    const userId = btnDelete.getAttribute('data-user-id');
+
+                                    let api = URL + '/account/';
+                                    if (listType.value === 'teacherList')
+                                        api = api + 'teacher/' + accountId + '/' + userId;
+                                    else if (listType.value === 'studentList')
+                                        api = api + 'student/' + accountId + '/' + userId;
+                                    $.ajax({
+                                            type: 'DELETE',
+                                            url: api,
+                                            contentType: 'application/json'
+                                        })
+                                        .done(contents => {
+                                            getContent();
                                         })
                                 }
                             })
@@ -260,4 +325,10 @@ function getContent() {
         })
 }
 
-getContent();
+if (listType)
+    listType.onchange = () => {
+        type = typeOriginal + '/' + listType.value;
+        getContent();
+    }
+else
+    getContent();

@@ -56,8 +56,10 @@ function getProfile() {
             const api = URL + '/' + user.key_userrole + '/' + user.key_userid;
             $.get(api)
                 .done(function(data) {
-                    username.innerHTML = data.firstname + ' ' + data.lastname;
-                    userPosition.innerHTML = user.key_userrole;
+                    if (username)
+                        username.innerHTML = data.firstname + ' ' + data.lastname;
+                    if (userPosition)
+                        userPosition.innerHTML = user.key_userrole;
                 })
                 .fail(function() {
                     console.log("error");

@@ -46,8 +46,8 @@
                                 <li class="subnav-header">
                                     <i class="ri-user-3-line"></i>
                                     <div class="user-text">
-                                        <span class="user-name"></span>
-                                        <span class="user-position"></span>
+                                        <span>Admin</span>
+                                        <span class="user-position">admin</span>
                                     </div>
                                 </li>
                                 <li class="btn btn-profile subnav-items">
@@ -111,7 +111,7 @@
                 <div class="col">
                     <h3 class="page-title">List Accounts</h3>
                     <ul class="breadcrumb">
-                        <input type="hidden" value="account/teacherList">
+                        <input type="hidden" value="account">
                         <li class="breadcrumb-items">
                             Accounts/
                         </li>
@@ -126,6 +126,12 @@
                     <h3 class="form-title">
                         Show Accounts
                     </h3>
+                    <select name="list-type" id="list-type" class="list-type">
+                        <option value="">Select List</option>
+                        <option value="teacherList">Teacher</option>
+                        <option value="studentList">Student</option>
+                    </select>
+                    <input type="hidden" value="teacherlist">
                     <table>
                         <tr>
                             <th class='username'>Username</th>
@@ -177,8 +183,8 @@
     </div>
 
     <script type="module" src="../../assets/scripts/main.js"></script>
-    <script type="module" src="../../assets/scripts/EditContent.js"></script>
     <script type="module" src="../../assets/scripts/ListContent.js"></script>
+    <script type="module" src="../../assets/scripts/EditContent.js"></script>
 </body>
 
 </html>
