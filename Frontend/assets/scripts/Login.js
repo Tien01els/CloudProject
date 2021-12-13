@@ -32,12 +32,13 @@ btnAdd.addEventListener("click", (Event) => {
         data: requestJSON,
         success: function(data) {
             // location.href = "Login.html";
-            if (data.key == "Success" && Model.role == "admin") {
-                window.location.href = "Dashboard.html";
-            } else if (data.key == "Success" && Model.role == "student") {
+            console.log('ok');
+            if (data.key == "Success" && Model.role == "student") {
                 window.location.href = "DashboardStudent.html";
             } else if (data.key == "Success" && Model.role == "teacher") {
                 window.location.href = "DashboardTeacher.html";
+            } else if (data.key == "Success") {
+                window.location.href = "Dashboard.html";
             }
         },
         error: function() {

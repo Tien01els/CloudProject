@@ -5,7 +5,7 @@ import getUser from './GetUser.js';
 const formEdit = document.querySelector('#form-edit');
 const btnCloseForm = document.querySelector('.form-close');
 const type = document.querySelector('input[type="hidden"]').value;
-const registered = document.querySelector('input[type="hidden"]').get;
+const registered = document.querySelector('input[type="hidden"]').getAttribute('id');
 const tableBody = document.querySelector('table tbody');
 const tableBodyModal = document.querySelector('.modal-container table tbody');
 
@@ -23,47 +23,54 @@ function getContent() {
             if (user.key_userrole == 'student' && type === 'score' || user.key_userrole == 'teacher' && type == 'course') {
                 api = URL + '/' + type + '/' + user.key_userid;
 
+            } else if (user.key_userrole == 'student' && type == 'course' && registered) {
+                api = URL + '/' + type + '/registered/' + user.key_userid;
             } else
                 api = URL + "/" + type + "/";
             console.log(api);
             $.get(api)
                 .done(function(contents) {
+                    const ths = document.querySelectorAll('.page-body th');
+                    const trs = document.querySelectorAll('tr:not(tr:first-child)');
+
+                    for (let tr of trs) {
+                        tr.innerHTML = '';
+                    }
                     contents.forEach(content => {
+
                         let tr = document.createElement('tr');
-                        const contentOrder = Object.keys(content).sort().reduce(
-                            (obj, key) => {
-                                obj[key] = content[key];
-                                return obj;
-                            }, {}
-                        );
-                        for (let key in contentOrder) {
-                            if (user.key_userrole == 'teacher' && type == 'course' && 'teacher_id' == key) {
-                                continue;
-                            }
-                            if (key !== 'account_id') {
+
+                        console.log(content);
+                        for (let key of ths) {
+                            // if (user.key_userrole == 'teacher' && type == 'course' && 'teacher_id' == key) {
+                            //     continue;
+                            // }
+                            if (key.classList.value != 'action') {
                                 let td = document.createElement('td');
-                                td.innerHTML = contentOrder[key];
+                                td.classList.add(key.classList.value + '-td');
+                                td.innerHTML = content[key.classList];
                                 tr.append(td);
                             }
                         }
                         let td = document.createElement('td');
-                        if (user.key_userrole == 'student' && type == 'score') {
-                            if (content.scores == null) {
-                                tableBody.append(tr);
-                                return;
-                            } else if (content.scores >= 5) {
-                                td.innerHTML = `
+                        if (user.key_userrole != 'admin' && user.key_userrole) {
+                            if (user.key_userrole == 'student' && type == 'score') {
+                                if (content.scores == null) {
+                                    tableBody.append(tr);
+                                    return;
+                                } else if (content.scores >= 5) {
+                                    td.innerHTML = `
                                     <td>
-                                        <i class="ri-check-circle-line"></i>
+                                        <i class="ri-checkbox-circle-line"></i>
                                     </td>`
-                            } else if (content.scores < 5) {
-                                td.innerHTML = `
+                                } else if (content.scores < 5) {
+                                    td.innerHTML = `
                                     <td>
                                         <i class="ri-close-circle-line"></i>
                                     </td>`
-                            }
-                        } else if (user.key_userrole == 'teacher' && type == 'course') {
-                            td.innerHTML = `
+                                }
+                            } else if (user.key_userrole == 'teacher' && type == 'course') {
+                                td.innerHTML = `
                             <td>
                                 <button class="btn btn-mark" data-index=${content.course_id} data-course=${content.name}>
                                     <i class="ri-calendar-check-line"></i>
@@ -72,8 +79,24 @@ function getContent() {
                                     <i class="ri-delete-bin-4-fill"></i>
                                 </button>
                             </td>`
-                        } else {
-                            td.innerHTML = `
+                            } else if (user.key_userrole == 'student' && type == 'course') {
+                                if (registered) {
+                                    td.innerHTML = `
+                                <td>
+                                    <button class="btn btn-delete" data-index=${content.course_id}>
+                                        <i class="ri-delete-bin-4-fill"></i>
+                                    </button>
+                                </td>`
+                                } else {
+                                    td.innerHTML = `
+                                <td>
+                                    <button class="btn btn-edit" data-index=${content.course_id} data-course=${content.name}>
+                                        <i class="ri-pencil-fill"></i>
+                                    </button>
+                                </td>`
+                                }
+                            } else {
+                                td.innerHTML = `
                             <td>
                                 <button class="btn btn-edit" data-index=${content.course_id}>
                                     <i class="ri-pencil-fill"></i>
@@ -82,6 +105,7 @@ function getContent() {
                                     <i class="ri-delete-bin-4-fill"></i>
                                 </button>
                             </td>`
+                            }
                         }
                         tr.append(td);
                         tableBody.append(tr);
@@ -197,7 +221,7 @@ function getContent() {
                                             data: JSON.stringify(data), // access in body
                                         })
                                         .done(contents => {
-                                            console.log('oke');
+                                            location.reload();
                                         })
                                 }
                             })
@@ -212,7 +236,7 @@ function getContent() {
                                             contentType: 'application/json',
                                         })
                                         .done(contents => {
-                                            console.log('oke');
+                                            location.reload();
                                         })
                                 }
                             })
