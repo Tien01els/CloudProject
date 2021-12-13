@@ -95,6 +95,16 @@ function getContent() {
                                     </button>
                                 </td>`
                                 }
+                            } else if (user.key_userrole == 'admin' && type == 'account') {
+                                td.innerHTML = `
+                                <td>
+                                    <button class="btn btn-reset" data-index=${content.account_id}>
+                                        <i class="ri-restart-fill"></i>
+                                    </button>
+                                    <button class="btn btn-delete" data-index=${content.account_id}>
+                                        <i class="ri-delete-bin-4-fill"></i>
+                                    </button>
+                                </td>`
                             } else {
                                 td.innerHTML = `
                             <td>
