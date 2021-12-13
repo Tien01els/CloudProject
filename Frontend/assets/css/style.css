@@ -274,7 +274,7 @@ a {
 
 .header-right .level-right .subnav-items:hover,
 .header-right .level-right .nav-items:first-child:hover,
-.header-right .level-right .nav-items a:hover {
+.header-right .level-right .subnav-items:hover a {
     color: #18aefa;
 }
 
@@ -285,10 +285,13 @@ a {
     right: 0;
     width: 160px;
     height: 120px;
+    z-index: 1000;
 }
 
+.subnav-user span,
 .subnav-user.active {
     display: block;
+    display: block !important;
 }
 
 .subnav-header {
@@ -300,12 +303,13 @@ a {
     width: 160px;
     padding: 12px 12px;
     background: #fff;
+    cursor: context-menu;
 }
 
 .user-text {
     font-size: 1.6rem;
     margin-left: 8px;
-    width: 40px;
+    width: 120px;
 }
 
 .user-text>span:last-child {
@@ -370,7 +374,8 @@ a {
 
 #sidebar li div:hover,
 #sidebar icon:hover,
-#sidebar a:hover {
+#sidebar .sub-menu li:hover a,
+#sidebar .main-menu div:hover a {
     color: #18aefa;
 }
 
@@ -579,6 +584,11 @@ a {
     padding: 16px;
     border-radius: 12px;
     overflow: hidden;
+}
+
+.modal-container table {
+    margin-top: 16px;
+    margin-bottom: 20px;
 }
 
 #form-edit .form-title {
