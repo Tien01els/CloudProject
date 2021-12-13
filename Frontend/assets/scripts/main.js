@@ -2,8 +2,11 @@ import { URL } from './URL.js';
 
 const btnMenu = document.querySelector('.btn-menu');
 const btnLogout = document.querySelector('.btn-logout');
-const btnProfile = document.querySelector('.btn-profile');
 const main = document.querySelector('#main');
+const navUser = document.querySelector('.nav-user');
+const subnavUser = document.querySelector('.subnav-user');
+const mainMenus = document.querySelectorAll('.main-menu');
+
 if (btnMenu)
     btnMenu.onclick = () => {
         main.classList.toggle('mini-sidebar');
@@ -27,3 +30,18 @@ if (btnLogout)
             }
         });
     }
+
+if (navUser)
+    navUser.onclick = () => {
+        subnavUser.classList.toggle('active');
+    }
+
+if (mainMenus)
+    mainMenus.forEach((mainMenu) => {
+        mainMenu.onclick = () => {
+            console.log("The following");
+            const subMenu = mainMenu.querySelector('.sub-menu');
+            if (subMenu)
+                subMenu.classList.toggle('active');
+        }
+    })

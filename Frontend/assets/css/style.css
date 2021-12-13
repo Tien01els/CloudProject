@@ -65,6 +65,8 @@ th {
     padding: 16px 30px 16px 12px;
     vertical-align: auto;
     width: 40px;
+    text-align: center;
+    vertical-align: middle;
 }
 
 th:first-child,
@@ -74,11 +76,6 @@ td:first-child {
 }
 
 td:last-child {
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -103,6 +100,16 @@ a {
 
 .mt-24 {
     margin-top: 24px;
+}
+
+.ri-checkbox-circle-line {
+    font-size: 2rem;
+    color: green;
+}
+
+.ri-close-circle-line {
+    font-size: 2rem;
+    color: red;
 }
 
 ::-webkit-scrollbar {
@@ -272,11 +279,16 @@ a {
 }
 
 .subnav-user {
+    display: none;
     position: absolute;
     top: 60px;
     right: 0;
     width: 160px;
     height: 120px;
+}
+
+.subnav-user.active {
+    display: block;
 }
 
 .subnav-header {
@@ -384,6 +396,14 @@ a {
 
 .main-menu>div>i:first-child {
     width: 32px;
+}
+
+.sub-menu {
+    display: none;
+}
+
+.sub-menu.active {
+    display: block;
 }
 
 .main-menu .sub-menu li {
