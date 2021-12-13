@@ -37,6 +37,8 @@ btnAdd.addEventListener("click", (Event) => {
                 window.location.href = "DashboardStudent.html";
             } else if (data.key == "Success" && Model.role == "teacher") {
                 window.location.href = "DashboardTeacher.html";
+            } else if (data.key == "Success" && Model.role == "admin") {
+                window.location.href = "Dashboard.html";
             } else if (data.key == "Success") {
                 window.location.href = "Dashboard.html";
             }
