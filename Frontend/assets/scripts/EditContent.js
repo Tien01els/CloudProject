@@ -4,7 +4,7 @@ import { URL } from './URL.js';
 const btnSubmit = document.querySelector('.btn-submit');
 const inputs = document.querySelectorAll('.form-input');
 const btnSubmitScores = document.querySelector('.modal-scores .btn-submit');
-const inputHidden = document.querySelector('input[type="hidden"]').value;
+const inputHidden = document.querySelector('input[type="hidden"]');
 
 if (btnSubmitScores) {
     btnSubmitScores.onclick = (e) => {
@@ -28,7 +28,7 @@ if (btnSubmitScores) {
                 data: JSON.stringify(data), // access in body
             })
             .done(function(data) {
-                console.log(data);
+                alert('Update success');
             })
             .fail(function() {
                 console.log("error");
@@ -54,7 +54,7 @@ function editObjects(data) {
     getUser()
         .then(user => {
             let api;
-            if (inputHidden == 'account') {
+            if (inputHidden && inputHidden.value == 'account') {
                 api = URL + '/account/update';
                 Object.assign(data, {
                     role: user.key_userrole,
@@ -62,29 +62,26 @@ function editObjects(data) {
                 });
             } else
                 api = URL + '/' + user.key_userrole + '/' + user.key_userid;
-            console.log(data);
-
             $.ajax({
                     type: 'PUT',
                     url: api,
                     contentType: 'application/json',
-                    data: JSON.stringify(data), // access in body
+                    data: JSON.stringify(data),
                 })
                 .done(function(data) {
-                    console.log(data);
+                    alert('Update success');
                 })
                 .fail(function() {
                     console.log("error");
                 })
         });
-
 }
 
 getUser()
     .then(user => {
         let api;
-        console.log(user.key_accid);
-        if (inputHidden == 'account')
+
+        if (inputHidden && inputHidden.value == 'account')
             api = URL + '/account/' + user.key_accid;
         else
             api = URL + '/' + user.key_userrole + '/' + user.key_userid;
