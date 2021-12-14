@@ -666,10 +666,19 @@ a {
     margin-right: 16px;
 }
 
+.user-img-student {
+    height: 120px;
+    width: 120px;
+    background-image: url("https://icon-library.com/images/student-icon/student-icon-10.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .user-img {
     height: 120px;
     width: 120px;
-    background-image: url("https://preschool.dreamguystech.com/html-template/assets/img/profiles/avatar-02.jpg");
+    background-image: url("https://img.favpng.com/12/15/21/computer-icons-avatar-user-profile-recommender-system-png-favpng-HaMDUPFH1etkLCdiFjgTKHzAs.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

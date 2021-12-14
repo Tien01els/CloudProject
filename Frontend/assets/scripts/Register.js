@@ -22,7 +22,7 @@ btnAdd.addEventListener("click", (Event) => {
         },
         data: requestJSON,
         success: function(data) {
-            console.log("Create account success");
+            alert("Create account success");
         },
         error: function() {
             console.log("The following error occured: ");

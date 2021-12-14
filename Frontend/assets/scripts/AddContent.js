@@ -23,7 +23,6 @@ function addObjects(data) {
             });
             const api = URL + '/' + data.hidden;
             delete data.hidden;
-            console.log(data);
             $.ajax({
                     type: 'POST',
                     url: api,
@@ -31,7 +30,7 @@ function addObjects(data) {
                     data: JSON.stringify(data), // access in body
                 })
                 .done(function(data) {
-                    console.log(data);
+                    alert('Submit success');
                 })
                 .fail(function() {
                     console.log("error");

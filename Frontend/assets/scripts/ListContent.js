@@ -145,7 +145,7 @@ function getContent() {
                                         .done(contents => {
                                             console.log(contents);
                                             if (contents === 'Registered')
-                                                alert('Registered');
+                                                alert('Can\'t Register');
                                             else {
                                                 let api = URL + '/score/';
                                                 $.ajax({
@@ -204,7 +204,7 @@ function getContent() {
                                             let td = document.createElement('td');
                                             td.innerHTML = `
                                                 <td>
-                                                    <input type="number" id="quantity" class='scores-td' name="quantity" min="0" max="100" value="${content['scores']}">
+                                                    <input type="number" id="quantity" class='scores-td' name="quantity" min="0" max="10" value="${content['scores']}">
                                                 </td>`;
                                             tr.append(td);
                                             tableBodyModal.append(tr);
@@ -243,7 +243,7 @@ function getContent() {
                                         data: JSON.stringify(data), // access in body
                                     })
                                     .done(function(data) {
-                                        console.log(data);
+                                        alert('Reset password success');
                                     })
                                     .fail(function() {
                                         console.log("error");
