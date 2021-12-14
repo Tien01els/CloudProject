@@ -6,6 +6,7 @@ import com.example.springbootcloud.converter.TeacherConverter;
 import com.example.springbootcloud.entity.Account;
 import com.example.springbootcloud.entity.Student;
 import com.example.springbootcloud.entity.Teacher;
+import com.example.springbootcloud.global.Encoding;
 import com.example.springbootcloud.global.GlobalVariable;
 import com.example.springbootcloud.model.dto.AccountDTO;
 import com.example.springbootcloud.repositories.AccountRepository;
@@ -35,13 +36,7 @@ public class AccountServiceImpl implements AccountService{
     private StudentRepository studentRepository;
 
     @Autowired
-    private StudentConverter studentConverter;
-
-    @Autowired
     private TeacherRepository teacherRepository;
-
-    @Autowired
-    private TeacherConverter teacherConverter;
 
     @Autowired
     private StudentService studentService;
@@ -58,6 +53,7 @@ public class AccountServiceImpl implements AccountService{
     //Tạo tài khoản
     @Override
     public AccountDTO createAccount(AccountDTO accountDTO) {
+        accountDTO.setPassword(Encoding.encode(accountDTO.getPassword()));
         Account account = accountConverter.toEntity(accountDTO);
         account = accountRepository.save(account);
         return accountConverter.toDTO(account);
@@ -66,6 +62,7 @@ public class AccountServiceImpl implements AccountService{
     //Xóa tài khoản
     @Override
     public void deleteAccount(AccountDTO accountDTO){
+        accountDTO.setPassword(Encoding.encode(accountDTO.getPassword()));
         Account account = accountConverter.toEntity(accountDTO);
         accountRepository.delete(account);
     }
@@ -79,6 +76,7 @@ public class AccountServiceImpl implements AccountService{
     @Override
     public AccountDTO getAccountById(Long account_id) {
         Account account = accountRepository.findAccountById(account_id);
+        account.setPassword(Encoding.decode(account.getPassword()));
         return accountConverter.toDTO(account);
     }
 
@@ -86,6 +84,7 @@ public class AccountServiceImpl implements AccountService{
     @Override
     public String checkOldPassword(AccountDTO accountDTO){
         Account account = accountRepository.findAccountById(accountDTO.getAccount_id());
+        account.setPassword(Encoding.encode(account.getPassword()));
         if(Objects.equals(account.getPassword(), accountDTO.getPassword())){
             return "Match";
         }else
@@ -96,6 +95,7 @@ public class AccountServiceImpl implements AccountService{
     @Override
     public void updateAccountById(AccountDTO accountDTO){
         Account account = accountRepository.findAccountById(accountDTO.getAccount_id());
+        accountDTO.setPassword(Encoding.encode(accountDTO.getPassword()));
         account.setPassword(accountDTO.getPassword());
         accountRepository.save(account);
     }
@@ -103,6 +103,7 @@ public class AccountServiceImpl implements AccountService{
     //Vừa đăng nhập vào thì kiểm tra xem có account đó không, có thì gán global.
     @Override
     public HashMap<String, String> checkLogin(AccountDTO accountDTO){
+        accountDTO.setPassword(Encoding.encode(accountDTO.getPassword()));
         Account account = accountRepository.findByUsernameAndPassword(accountDTO.getUsername(), accountDTO.getPassword());
         HashMap<String, String> result = new HashMap<String, String>();
 
@@ -142,7 +143,7 @@ public class AccountServiceImpl implements AccountService{
             Account account = (Account) list.get(i)[0];
             map.put("account_id", Long.toString(account.getAccount_id()));
             map.put("username", account.getUsername());
-            map.put("password", account.getPassword());
+            map.put("password", Encoding.decode(account.getPassword()));
 
             Student student = (Student) list.get(i)[1];
             map.put("user_id", Long.toString(student.getStudent_id()));
@@ -169,7 +170,7 @@ public class AccountServiceImpl implements AccountService{
             Account account = (Account) list.get(i)[0];
             map.put("account_id", Long.toString(account.getAccount_id()));
             map.put("username", account.getUsername());
-            map.put("password", account.getPassword());
+            map.put("password", Encoding.decode(account.getPassword()));
 
             Teacher teacher = (Teacher) list.get(i)[1];
             map.put("user_id", Long.toString(teacher.getTeacher_id()));

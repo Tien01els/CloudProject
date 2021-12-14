@@ -42,7 +42,6 @@ public class StudentServiceImpl implements StudentService{
         return studentConverter.toDTO(student);
     }
 
-
     @Override
     public void deleteStudent(Long id){
         studentRepository.deleteById(id);

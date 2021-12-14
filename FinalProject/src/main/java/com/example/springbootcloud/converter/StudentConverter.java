@@ -4,9 +4,12 @@ import com.example.springbootcloud.entity.Student;
 import com.example.springbootcloud.model.dto.StudentDTO;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+import java.util.Base64;
+
 @Component
 public class StudentConverter {
-    public Student toEntity(StudentDTO dto){
+    public Student toEntity(StudentDTO dto) {
         Student student = new Student();
         student.setStudent_id(dto.getStudent_id());
         student.setFirstname(dto.getFirstname());
