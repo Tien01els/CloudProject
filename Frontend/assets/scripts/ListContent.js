@@ -115,7 +115,7 @@ function getContent() {
                                 <button class="btn btn-reset" data-index="${content.account_id}" data-user-id="${content.user_id}">
                                     <i class="ri-restart-fill"></i>
                                 </button>
-                                <button class="btn btn-delete" data-index="${content.account_id}" data-user-id="${content.user_id}">
+                                <button class="btn btn-delete" data-index="${content.account_id}" data-user-id="${content.user_id}" data-username="${content.username}">
                                     <i class="ri-delete-bin-4-fill"></i>
                                 </button>
                             </td>`
@@ -220,36 +220,30 @@ function getContent() {
                     if (btnResets != null) {
                         btnResets.forEach(btnReset => {
                             console.log(btnReset);
-                            const courseId = btnReset.getAttribute('data-index');
+                            const accountId = btnReset.getAttribute('data-index');
+                            const username = btnReset.getAttribute('data-username');
+                            let role;
+                            if (listType.value === 'teacherList')
+                                role = 'teacher';
+                            else if (listType.value === 'studentList')
+                                role = 'student';
                             btnReset.onclick = () => {
-                                api = URL + '/score/course/' + courseId;
-                                console.log(api);
-                                $.get(api)
-                                    .done(function(contents) {
-                                        const ths = document.querySelectorAll('.modal-container th');
-                                        const trs = document.querySelectorAll('.modal-container tr:not(tr:first-child)');
-                                        for (let tr of trs) {
-                                            tr.innerHTML = '';
-                                        }
-                                        contents.forEach(content => {
-                                            let tr = document.createElement('tr');
-
-                                            for (let key of ths) {
-                                                if (key.classList.value != 'scores') {
-                                                    let td = document.createElement('td');
-                                                    td.classList.add(key.classList.value + '-td');
-                                                    td.innerHTML = content[key.classList];
-                                                    tr.append(td);
-                                                }
-                                            }
-                                            let td = document.createElement('td');
-                                            td.innerHTML = `
-                                                <td>
-                                                    <input type="number" id="quantity" class='scores-td' name="quantity" min="0" max="100" value="${content['scores']}">
-                                                </td>`;
-                                            tr.append(td);
-                                            tableBodyModal.append(tr);
-                                        })
+                                api = URL + '/account/update';
+                                let data = {};
+                                Object.assign(data, {
+                                    username,
+                                    password: 123,
+                                    role,
+                                    account_id: accountId
+                                });
+                                $.ajax({
+                                        type: 'PUT',
+                                        url: api,
+                                        contentType: 'application/json',
+                                        data: JSON.stringify(data), // access in body
+                                    })
+                                    .done(function(data) {
+                                        console.log(data);
                                     })
                                     .fail(function() {
                                         console.log("error");

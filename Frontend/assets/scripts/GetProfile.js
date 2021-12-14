@@ -8,7 +8,7 @@ const type = document.querySelector('input[type="hidden"]').value;
 function getProfile() {
     getUser()
         .then(user => {
-            const api = URL + '/' + type + '/' + user.key_userid;
+            const api = URL + '/' + user.key_userrole + '/' + user.key_userid;
             $.get(api)
                 .done(function(data) {
                     spanProfiles.forEach(spanProfile => {
