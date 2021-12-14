@@ -4,6 +4,7 @@ import { URL } from './URL.js';
 const btnSubmit = document.querySelector('.btn-submit');
 const inputs = document.querySelectorAll('.form-input');
 const btnSubmitScores = document.querySelector('.modal-scores .btn-submit');
+const inputHidden = document.querySelector('input[type="hidden"]').value;
 
 if (btnSubmitScores) {
     btnSubmitScores.onclick = (e) => {
@@ -38,9 +39,10 @@ if (btnSubmitScores) {
         e.preventDefault();
         var value = {};
         inputs.forEach(input => {
-            Object.assign(value, {
-                [input.getAttribute('name')]: input.value
-            });
+            if (input.getAttribute('name'))
+                Object.assign(value, {
+                    [input.getAttribute('name')]: input.value
+                });
         });
         editObjects(value);
     }
@@ -52,7 +54,16 @@ function editObjects(data) {
     getUser()
         .then(user => {
             let api;
-            api = URL + '/' + user.key_userrole + '/' + user.key_userid;
+            if (inputHidden == 'account') {
+                api = URL + '/account/update';
+                Object.assign(data, {
+                    role: user.key_userrole,
+                    account_id: user.key_accid
+                });
+            } else
+                api = URL + '/' + user.key_userrole + '/' + user.key_userid;
+            console.log(data);
+
             $.ajax({
                     type: 'PUT',
                     url: api,
@@ -71,7 +82,12 @@ function editObjects(data) {
 
 getUser()
     .then(user => {
-        const api = URL + '/' + user.key_userrole + '/' + user.key_userid;
+        let api;
+        console.log(user.key_accid);
+        if (inputHidden == 'account')
+            api = URL + '/account/' + user.key_accid;
+        else
+            api = URL + '/' + user.key_userrole + '/' + user.key_userid;
         $.ajax({
                 type: 'GET',
                 url: api,
@@ -79,7 +95,8 @@ getUser()
             })
             .done(function(data) {
                 inputs.forEach(input => {
-                    input.value = data[input.getAttribute('name')]
+                    if (input.getAttribute('name') && input.getAttribute('name') != 'password')
+                        input.value = data[input.getAttribute('name')];
                 });
             })
             .fail(function() {
