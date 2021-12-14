@@ -95,7 +95,8 @@ public class AccountServiceImpl implements AccountService{
     //Update thông tin account
     @Override
     public void updateAccountById(AccountDTO accountDTO){
-        Account account = accountConverter.toEntity(accountDTO);
+        Account account = accountRepository.findAccountById(accountDTO.getAccount_id());
+        account.setPassword(accountDTO.getPassword());
         accountRepository.save(account);
     }
 
