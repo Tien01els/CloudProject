@@ -16,7 +16,7 @@ public class StudentController {
     public ResponseEntity<?> updateStudent(@RequestBody StudentDTO req, @PathVariable("id") Long id){
         req.setStudent_id(id);
         StudentDTO result = studentService.updateStudent(req);
-        return ResponseEntity.ok(req);
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("")
