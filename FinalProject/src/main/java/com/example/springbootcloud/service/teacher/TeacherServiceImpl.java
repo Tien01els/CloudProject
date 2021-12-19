@@ -2,11 +2,14 @@ package com.example.springbootcloud.service.teacher;
 
 import com.example.springbootcloud.converter.TeacherConverter;
 import com.example.springbootcloud.entity.Teacher;
+import com.example.springbootcloud.global.GlobalVariable;
 import com.example.springbootcloud.model.dto.TeacherDTO;
 import com.example.springbootcloud.repositories.TeacherRepository;
+import org.apache.tomcat.jni.Global;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Component
@@ -46,9 +49,17 @@ public class TeacherServiceImpl implements TeacherService{
         return teacherConverter.toDTO(teacher);
     }
 
-    //Chưa làm - admin
     @Override
     public void deleteTeacher(Long id){
         teacherRepository.deleteById(id);
+    }
+
+    @Override
+    public HashMap<String, String> updateTeacherImage(String imageURL){
+        Teacher existingTeacher = teacherRepository.findById(GlobalVariable.IDuser).orElse(null);
+        assert existingTeacher != null;
+        existingTeacher.setImage(imageURL);
+        teacherRepository.save(existingTeacher);
+        return new HashMap<>() {{put("key", "Success");}};
     }
 }
