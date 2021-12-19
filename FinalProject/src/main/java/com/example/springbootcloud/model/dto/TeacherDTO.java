@@ -9,10 +9,19 @@ public class TeacherDTO {
     private String firstname;
     private String lastname;
     private String email;
+    private String image;
     private String birth;
     private String phone;
     private String gender;
     private Long account_id;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public Long getTeacher_id() {
         return teacher_id;

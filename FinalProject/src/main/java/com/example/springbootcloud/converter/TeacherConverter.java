@@ -11,6 +11,7 @@ public class TeacherConverter {
         teacher.setTeacher_id(dto.getTeacher_id());
         teacher.setFirstname(dto.getFirstname());
         teacher.setLastname(dto.getLastname());
+        teacher.setImage(dto.getImage());
         teacher.setEmail(dto.getEmail());
         teacher.setBirth(dto.getBirth());
         teacher.setPhone(dto.getPhone());
@@ -24,6 +25,7 @@ public class TeacherConverter {
         dto.setTeacher_id(entity.getTeacher_id());
         dto.setFirstname(entity.getFirstname());
         dto.setLastname(entity.getLastname());
+        dto.setImage(entity.getImage());
         dto.setEmail(entity.getEmail());
         dto.setBirth(entity.getBirth());
         dto.setPhone(entity.getPhone());
@@ -40,6 +42,7 @@ public class TeacherConverter {
     public Teacher toExistingEntity(Teacher entity, TeacherDTO dto){
         entity.setFirstname(dto.getFirstname());
         entity.setLastname(dto.getLastname());
+        entity.setImage(dto.getImage());
         entity.setEmail(dto.getEmail());
         entity.setBirth(dto.getBirth());
         entity.setPhone(dto.getPhone());
