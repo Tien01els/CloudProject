@@ -41,7 +41,7 @@ phan
 </details>
 
 ## Đôi lời về Project
-![](https://drive.google.com/thumbnail?id=1mOqIo6DPXxxjRWhUb44UHPGZQI9CkjhC)
+![](https://drive.google.com/file/d/1mOqIo6DPXxxjRWhUb44UHPGZQI9CkjhC/view)
 
 
 Đầu tiên, em xin gửi lời cảm ơn sâu sắc đến giảng viên bộ môn - thầy Huỳnh Xuân Phụng đã giúp cho nhóm em làm đồ án này, truyền đạt những hiến thức rất hay về AWS Cloud và trong thời gian giảng dạy thầy cũng đã giảng dạy rất nhiệt tình. Tham gia lớp CLoud Computing của thầy thì em đã có thêm cho mình rất nhiều kiến thức về AWS và biết đến nhiều hơn thế nào gọi là Điện Toán Đám Mây. Em xin cám ơn thầy.
