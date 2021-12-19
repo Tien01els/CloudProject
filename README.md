@@ -10,7 +10,7 @@ phan
   <p align="center">
      Cloud Computing
     <br />
-    <a href=""><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Tien01els/CloudProject/blob/master/README.md"><strong>Explore the docs »</strong></a>
     <br />
     <br />
   </p>
