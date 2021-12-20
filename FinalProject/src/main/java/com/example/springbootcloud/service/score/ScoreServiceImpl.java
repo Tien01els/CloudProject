@@ -103,6 +103,7 @@ public class ScoreServiceImpl implements ScoreService{
             map.put("student_id", Long.toString(student.getStudent_id()));
             map.put("firstname", student.getFirstname());
             map.put("lastname", student.getLastname());
+            map.put("image", student.getImage());
             map.put("email", student.getEmail());
             map.put("phone", student.getPhone());
             map.put("birth", student.getBirth());

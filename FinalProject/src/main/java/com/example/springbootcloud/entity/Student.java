@@ -20,6 +20,9 @@ public class Student {
     @Column(name = "lastname")
     private String lastname;
 
+    @Column(name = "image")
+    private String image;
+
     @Column(name = "email")
     private String email;
 
@@ -34,6 +37,14 @@ public class Student {
 
     @Column(name = "account_id")
     private Long account_id;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public Long getStudent_id() {
         return student_id;

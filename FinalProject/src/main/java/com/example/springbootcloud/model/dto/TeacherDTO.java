@@ -1,6 +1,7 @@
 package com.example.springbootcloud.model.dto;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class TeacherDTO {
@@ -8,10 +9,19 @@ public class TeacherDTO {
     private String firstname;
     private String lastname;
     private String email;
+    private String image;
     private String birth;
     private String phone;
     private String gender;
     private Long account_id;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public Long getTeacher_id() {
         return teacher_id;

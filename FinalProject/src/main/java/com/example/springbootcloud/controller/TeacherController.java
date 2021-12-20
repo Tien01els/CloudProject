@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+
 @RestController
 @RequestMapping(value = "/teacher")
 public class TeacherController {
@@ -24,6 +26,11 @@ public class TeacherController {
         req.setTeacher_id(id);
         TeacherDTO result = teacherService.updateTeacher(req);
         return ResponseEntity.ok(result);
+    }
+
+    @PutMapping("/uploadImage/{imageURL}")
+    public ResponseEntity<?> updateTeacher(@PathVariable("imageURL") String imageURL){
+        return ResponseEntity.ok(teacherService.updateTeacherImage(imageURL));
     }
 
     @GetMapping("/{id}")

@@ -2,10 +2,14 @@ package com.example.springbootcloud.service.student;
 
 import com.example.springbootcloud.converter.StudentConverter;
 import com.example.springbootcloud.entity.Student;
+import com.example.springbootcloud.global.GlobalVariable;
 import com.example.springbootcloud.model.dto.StudentDTO;
 import com.example.springbootcloud.repositories.StudentRepository;
+import org.apache.tomcat.jni.Global;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.HashMap;
 
 @Component
 public class StudentServiceImpl implements StudentService{
@@ -42,9 +46,17 @@ public class StudentServiceImpl implements StudentService{
         return studentConverter.toDTO(student);
     }
 
-
     @Override
     public void deleteStudent(Long id){
         studentRepository.deleteById(id);
+    }
+
+    @Override
+    public HashMap<String, String> updateStudentImage(String imageURL){
+        Student existingStudent = studentRepository.findById(GlobalVariable.IDuser).orElse(null);
+        assert existingStudent != null;
+        existingStudent.setImage(imageURL);
+        studentRepository.save(existingStudent);
+        return new HashMap<>() {{put("key", "Success");}};
     }
 }
