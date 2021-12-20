@@ -40,14 +40,8 @@ function getContent() {
                         tr.innerHTML = '';
                     }
                     contents.forEach(content => {
-
                         let tr = document.createElement('tr');
-
-                        console.log(content);
                         for (let key of ths) {
-                            // if (user.key_userrole == 'teacher' && type == 'course' && 'teacher_id' == key) {
-                            //     continue;
-                            // }
                             if (key.classList.value != 'action') {
                                 let td = document.createElement('td');
                                 td.classList.add(key.classList.value + '-td');
