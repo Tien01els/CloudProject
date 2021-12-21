@@ -1,15 +1,14 @@
-import dotenv from "dotenv";
-import aws from "aws-sdk";
-import crypto from "crypto";
-import { promisify } from "util";
+const dotenv = require("dotenv");
+const aws = require("aws-sdk");
+const crypto = require("crypto");
+const { promisify } = require("util");
 const randomBytes = promisify(crypto.randomBytes);
 
 dotenv.config();
-
 const region = "us-west-2";
 const bucketName = "upload-profile-s3-bucket";
-const accessKeyId = "";
-const secretAccessKey = "";
+const accessKeyId = "AKIAY5KMAK7THFZTKHHQ";
+const secretAccessKey = "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";
 
 const s3 = new aws.S3({
     region,
