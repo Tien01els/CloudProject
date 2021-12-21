@@ -55,7 +55,7 @@ public class StudentServiceImpl implements StudentService{
     public HashMap<String, String> updateStudentImage(String imageURL){
         Student existingStudent = studentRepository.findById(GlobalVariable.IDuser).orElse(null);
         assert existingStudent != null;
-        existingStudent.setImage(imageURL);
+//        existingStudent.setImage(imageURL);
         studentRepository.save(existingStudent);
         return new HashMap<>() {{put("key", "Success");}};
     }
