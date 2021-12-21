@@ -6,9 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" />
-        <link rel="stylesheet" href="../../assets/css/style.css" />
+        <link rel="stylesheet" href="./assets/css/style.css" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
-
         <title>Profile Students</title>
     </head>
 
@@ -101,67 +100,90 @@
             <div id="container">
                 <div class="page-header">
                     <div class="col">
-                        <h3 class="page-title">Translate</h3>
+                        <h3 class="page-title">Profile Student</h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-items">Students/</li>
+                            <li class="breadcrumb-items">Profile Student</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="profile-header">
+                    <div class="profile-info">
+                        <div class="profile-user-img">
+                            <div class="user-img-student"></div>
+                        </div>
+                        <div class="profile-user-info">
+                            <span class="fullname"></span>
+                            <div class="profile-contact-info">
+                                <span>
+                                    Phone number:
+                                    <span class="phone"> </span>
+                                </span>
+                                <p></p>
+                                <span>
+                                    Email:
+                                    <span class="email"> </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="profile-user-btn">
+                            <a href="EditProfileStudent.html" class="btn btn-edit">Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-body">
+                    <h3 class="form-title">Personal Details</h3>
+                    <div class="profile-info">
+                        <span class="profile-info-key"> Name </span>
+                        <span class="fullname profile-info-value"> </span>
+                    </div>
+                    <div class="profile-info">
+                        <span class="profile-info-key"> Gender </span>
+                        <span class="gender profile-info-value"> </span>
+                    </div>
+                    <div class="profile-info">
+                        <span class="profile-info-key"> Date of Birth </span>
+                        <span class="birth profile-info-value"> </span>
+                    </div>
+                    <div class="profile-info">
+                        <span class="profile-info-key"> Phone number </span>
+                        <span class="phone profile-info-value"> </span>
+                    </div>
+                    <div class="profile-info">
+                        <span class="profile-info-key"> Email </span>
+                        <span class="email profile-info-value"> </span>
                     </div>
                 </div>
                 <div class="page-body">
-                    <div class="selection">
-                        <select name="source-language" id="source-languge">
-                            <option value="AUTO">AUTO</option>
-                            <option value="ARABIC">ARABIC</option>
-                            <option value="CHINESE">CHINESE</option>
-                            <option value="ENGLISH">ENGLISH</option>
-                            <option value="FRENCH">FRENCH</option>
-                            <option value="GERMAN">GERMAN</option>
-                            <option value="PORTUGUESE">PORTUGUESE</option>
-                            <option value="SPANISH">SPANISH</option>
-                            <option value="VIETNAMESE">VIETNAMESE</option>
-                        </select>
-                        <div class="btn btn-change">
-                            <i class="ri-exchange-box-line"></i>
+                    <form action="" class="row">
+                        <h3 class="form-title">Login Details</h3>
+                        <input type="hidden" name="" value="account" />
+
+                        <div class="col form-group">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" name="username" class="form-input" />
                         </div>
-                        <select name="target-language" id="target-languge">
-                            <option value="AUTO">AUTO</option>
-                            <option value="ARABIC">ARABIC</option>
-                            <option value="CHINESE">CHINESE</option>
-                            <option value="ENGLISH">ENGLISH</option>
-                            <option value="FRENCH">FRENCH</option>
-                            <option value="GERMAN">GERMAN</option>
-                            <option value="PORTUGUESE">PORTUGUESE</option>
-                            <option value="SPANISH">SPANISH</option>
-                            <option value="VIETNAMESE">VIETNAMESE</option>
-                        </select>
-                    </div>
-                    <div class="translate-container">
-                        <textarea name="" id="" cols="30" rows="10" class="source-text"></textarea>
-                        <textarea name="" id="" cols="30" rows="10" class="target-text" readonly="true"></textarea>
-                    </div>
-                    <button class="btn btn-translate" style="margin-top: 12px">Submit</button>
+
+                        <div class="col-half form-group">
+                            <label for="" class="form-label">Old Password</label>
+                            <input type="password" name="" class="form-input" />
+                        </div>
+                        <div class="col-half form-group">
+                            <label for="" class="form-label">New Password</label>
+                            <input type="password" name="" class="form-input" />
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-submit">Submit</button>
+                            <button type="reset" class="btn btn-reset">Reset</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div id="footer">
-                <span>Copyright © </span>
-            </div>
+            <div id="footer"></div>
         </div>
 
-        <script type="module">
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-            const firebaseConfig = {
-                apiKey: "AIzaSyDfzLDDrZBAAJqvLwUhGvQkLxpLuRVA5gU",
-                authDomain: "music-656c2.firebaseapp.com",
-                databaseURL: "https://music-656c2-default-rtdb.firebaseio.com",
-                projectId: "music-656c2",
-                storageBucket: "music-656c2.appspot.com",
-                messagingSenderId: "66428751827",
-                appId: "1:66428751827:web:ef9453bcefe71298046926",
-                measurementId: "G-32WH3PMPLM",
-            };
-            const app = initializeApp(firebaseConfig);
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1046.0/aws-sdk.js"></script>
-        <script type="module" src="../../assets/scripts/main.js"></script>
-        <script type="module" src="../../assets/scripts/EditContent.js"></script>
-        <script type="module" src="../../assets/scripts/Translate.js"></script>
+        <script type="module" src="./assets/scripts/main.js"></script>
+        <script type="module" src="./assets/scripts/EditContent.js"></script>
+        <script type="module" src="./assets/scripts/GetProfile.js"></script>
     </body>
 </html>

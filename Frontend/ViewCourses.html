@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" />
-        <link rel="stylesheet" href="../../assets/css/style.css" />
+        <link rel="stylesheet" href="./assets/css/style.css" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
         <title>Add Students</title>
     </head>
@@ -41,19 +41,6 @@
                                 <!-- <img src="" alt=""> -->
                                 <i class="ri-user-3-line"></i>
                                 <i class="menu-arrow ri-arrow-down-s-line"></i>
-                                <ul class="subnav-user">
-                                    <li class="subnav-header">
-                                        <i class="ri-user-3-line"></i>
-                                        <div class="user-text">
-                                            <span>Admin</span>
-                                            <span class="user-position">admin</span>
-                                        </div>
-                                    </li>
-                                    <li class="btn btn-profile subnav-items">
-                                        <a href="">My profile</a>
-                                    </li>
-                                    <li class="btn btn-logout subnav-items">Logout</li>
-                                </ul>
                             </li>
                         </ul>
                     </div>
@@ -68,8 +55,14 @@
                         <li class="main-menu">
                             <div>
                                 <i class="ri-contacts-book-2-line"></i>
-                                <a href="Dashboard.html">Admin Dashboard</a>
+                                <span>Dashboard</span>
+                                <i class="menu-arrow ri-arrow-down-s-line"></i>
                             </div>
+                            <ul class="sub-menu">
+                                <li><a href="Dashboard.html">Admin Dashboard</a></li>
+                                <li><a href="">Teacher Dashboard</a></li>
+                                <li><a href="">Student Dashboard</a></li>
+                            </ul>
                         </li>
                         <li class="main-menu">
                             <div>
@@ -80,30 +73,36 @@
                         <li class="main-menu">
                             <div>
                                 <i class="ri-contacts-book-2-line"></i>
-                                <a href="ListStudents.html">Student List</a>
-                            </div>
-                        </li>
-                        <li class="main-menu">
-                            <div>
-                                <i class="ri-contacts-book-2-line"></i>
-                                <a href="ListTeachers.html">Teacher List</a>
-                            </div>
-                        </li>
-                        <li class="main-menu">
-                            <div>
-                                <i class="ri-contacts-book-2-line"></i>
-                                <a href="ListCourses.html">Course List</a>
-                            </div>
-                        </li>
-                        <li class="main-menu">
-                            <div>
-                                <i class="ri-contacts-book-2-line"></i>
-                                <span>Account</span>
+                                <span>Students</span>
                                 <i class="menu-arrow ri-arrow-down-s-line"></i>
                             </div>
                             <ul class="sub-menu">
-                                <li><a href="ListAccounts.html">Account List</a></li>
-                                <li><a href="RegisterAccount.html">Account Register</a></li>
+                                <li><a href="ListStudents.html">Student List</a></li>
+                                <li><a href="">Student View</a></li>
+                                <li><a href="ProfileStudent.html">Student Profile</a></li>
+                            </ul>
+                        </li>
+                        <li class="main-menu">
+                            <div>
+                                <i class="ri-contacts-book-2-line"></i>
+                                <span>Teachers</span>
+                                <i class="menu-arrow ri-arrow-down-s-line"></i>
+                            </div>
+                            <ul class="sub-menu">
+                                <li><a href="ListTeachers.html">Teacher List</a></li>
+                                <li><a href="">Teacher View</a></li>
+                                <li><a href="ProfileTeacher.html">Teacher Profile</a></li>
+                            </ul>
+                        </li>
+                        <li class="main-menu">
+                            <div>
+                                <i class="ri-contacts-book-2-line"></i>
+                                <span>Courses</span>
+                                <i class="menu-arrow ri-arrow-down-s-line"></i>
+                            </div>
+                            <ul class="sub-menu">
+                                <li><a href="ListCourses.html">Course List</a></li>
+                                <li><a href="ProfileCourse.html">Course Profile</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -112,27 +111,23 @@
             <div id="container">
                 <div class="page-header">
                     <div class="col">
-                        <h3 class="page-title">List Accounts</h3>
+                        <h3 class="page-title">List Courses</h3>
                         <ul class="breadcrumb">
-                            <input type="hidden" value="account" />
-                            <li class="breadcrumb-items">Accounts/</li>
-                            <li class="breadcrumb-items">List Accounts</li>
+                            <input type="hidden" value="course" />
+                            <li class="breadcrumb-items">Courses/</li>
+                            <li class="breadcrumb-items">List Courses</li>
                         </ul>
                     </div>
                 </div>
                 <div class="page-body">
                     <div class="row">
-                        <h3 class="form-title">Show Accounts</h3>
-                        <select name="list-type" id="list-type" class="list-type">
-                            <option value="">Select List</option>
-                            <option value="teacherList">Teacher</option>
-                            <option value="studentList">Student</option>
-                        </select>
-                        <input type="hidden" value="teacherlist" />
+                        <h3 class="form-title">Show Courses</h3>
                         <table>
                             <tr>
-                                <th class="username">Username</th>
-                                <th class="action">Actions</th>
+                                <th>Course ID</th>
+                                <th>Course Name</th>
+                                <th>Teacher ID</th>
+                                <th>Actions</th>
                             </tr>
                         </table>
                     </div>
@@ -173,8 +168,8 @@
             </div>
         </div>
 
-        <script type="module" src="../../assets/scripts/main.js"></script>
-        <script type="module" src="../../assets/scripts/ListContent.js"></script>
-        <script type="module" src="../../assets/scripts/EditContent.js"></script>
+        <script type="module" src="./assets/scripts/main.js"></script>
+        <script type="module" src="./assets/scripts/ListContent.js"></script>
+        <script type="module" src="./assets/scripts/EditContent.js"></script>
     </body>
 </html>
