@@ -14,7 +14,7 @@ imageInput.onchange = async () => {
     const file = imageInput.files[0];
 
     // get secure url from our server
-    const { url } = await fetch("http://35.173.156.152:8081/s3Url").then((res) => res.json());
+    const { url } = await fetch("hhttp://127.0.0.1:8080/s3Url").then((res) => res.json());
     console.log(url);
 
     // post the image direclty to the s3 bucket

@@ -1,9 +1,9 @@
-import express from "express";
-import { generateUploadURL } from "./scripts/s3.js";
+const express = require("express");
+const { generateUploadURL } = require("./scripts/s3.js");
 
 const app = express();
 
-app.use(express.static("front"));
+// app.use(express.static("front"));
 
 app.get("/s3Url", async (req, res) => {
     const url = await generateUploadURL();
