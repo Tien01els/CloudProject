@@ -10,7 +10,7 @@ phan
   <p align="center">
      Cloud Computing
     <br />
-    <a href="https://github.com/Tien01els/CloudProject/blob/master/README.md"><strong>Explore the docs »</strong></a>
+    <a href=""><strong>Explore the docs »</strong></a>
     <br />
     <br />
   </p>
@@ -33,7 +33,7 @@ phan
         <li><a href="#installation">Cài đặt cần thiết</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#usage">Sử dụng</a></li>
     <li><a href="#contributing">Đóng góp</a></li>
     <li><a href="#contact">Liên hệ</a></li>
     <li><a href="#conclusion">Kết luận</a></li>
@@ -41,7 +41,7 @@ phan
 </details>
 
 ## Đôi lời về Project
-![](https://drive.google.com/file/d/1mOqIo6DPXxxjRWhUb44UHPGZQI9CkjhC/view)
+![](https://drive.google.com/thumbnail?id=1mOqIo6DPXxxjRWhUb44UHPGZQI9CkjhC)
 
 
 Đầu tiên, em xin gửi lời cảm ơn sâu sắc đến giảng viên bộ môn - thầy Huỳnh Xuân Phụng đã giúp cho nhóm em làm đồ án này, truyền đạt những hiến thức rất hay về AWS Cloud và trong thời gian giảng dạy thầy cũng đã giảng dạy rất nhiệt tình. Tham gia lớp CLoud Computing của thầy thì em đã có thêm cho mình rất nhiều kiến thức về AWS và biết đến nhiều hơn thế nào gọi là Điện Toán Đám Mây. Em xin cám ơn thầy.
@@ -60,11 +60,43 @@ Các công nghệ, ngôn ngữ, thư viện và các dịch vụ của AWS nhóm
 ### Cài đặt
 Để có thể cài đặt và sử dụng dự án bạn phải cài đặt theo các yêu cầu bên dưới.
 
-1. 
-2. 
-3. 
-4. 
-5. 
+1. Tạo các máy ảo EC2 ở trên AWS
+2. Cài đặt Security Group, và tạo VPC cấp cho các máy EC2 các IPv4 Public
+3. Ở máy ảo EC2 Frontend: Thay đổi IP phù hợp với máy của Backend
+  ```sh
+  docker build -t my-fe .
+  docker run -d -p 8080:80 --name my-frontend my-fe
+  ```
+4. Dockerfile của Frontend:
+  ```sh
+  FROM nginx:alpine
+  COPY ./webapps/. /usr/share/nginx/html
+  COPY default.conf /etc/nginx/conf.d/default.conf
+  ```
+![](https://firebasestorage.googleapis.com/v0/b/finalcntt.appspot.com/o/Images%2Fneed2.png?alt=media&token=c75432a1-0376-4dd9-8075-57d91349f90e)
+
+5. Ở máy ảo EC2 Backend ( Lưu ý cần khởi động Database trước)
+  ```sh
+  docker build -t my-be .
+  docker run -d -p 9000:80 --name my-backend -e MYSQL_HOST=52.45.238.90 -e MYSQL_USER=root -e MYSQL_PASSWORD=root -e MYSQL_POST=3307 my-be
+  ```
+6. Dockerfile của Backend: thay đổi IP phù hợp với IP của database
+  ```sh
+  FROM openjdk:17
+  ADD target/spring-backend.jar spring-backend.jar 
+  ENTRYPOINT [ "java", "-jar", "/spring-backend.jar"]
+  ```
+![](https://firebasestorage.googleapis.com/v0/b/finalcntt.appspot.com/o/Images%2Fneed1.png?alt=media&token=725c3008-d255-4dc3-8a7f-6d8c4bff537c)
+
+7. Ở máy ảo Database
+  ```sh
+  docker run -d -p 3307:3306 --name my-database --env="MYSQL_ROOT_PASSWORD=root" --env="MYSQL_PASSWORD=root" --env="MYSQL_DATABASE=CloudProject" mysql:8.0.26
+  ```
+
+## Sử dụng
+![](https://firebasestorage.googleapis.com/v0/b/finalcntt.appspot.com/o/Images%2Flogin.png?alt=media&token=39ebb76e-eae3-4d2e-9573-34e4265a31a0)
+![](https://firebasestorage.googleapis.com/v0/b/finalcntt.appspot.com/o/Images%2Fdashboard.png?alt=media&token=92b16a01-9033-4979-b91b-12b76af283ca)
+
 
 ## Đóng góp
 
