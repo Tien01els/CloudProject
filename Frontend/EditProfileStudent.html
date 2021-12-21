@@ -6,8 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" />
-        <link rel="stylesheet" href="../../assets/css/style.css" />
+        <link rel="stylesheet" href="./assets/css/style.css" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+
         <title>Profile Students</title>
     </head>
 
@@ -15,7 +16,7 @@
         <div id="main">
             <div id="header">
                 <div class="header-left">
-                    <a href="DashboardTeacher.html" class="logo">
+                    <a href="DashboardStudent.html" class="logo">
                         <i class="icon ri-book-2-fill"></i>
                         <span>Student</span>
                     </a>
@@ -50,7 +51,7 @@
                                         </div>
                                     </li>
                                     <li class="btn btn-profile subnav-items">
-                                        <a href="ProfileTeacher.html">My profile</a>
+                                        <a href="ProfileStudent.html">My profile</a>
                                     </li>
                                     <li class="btn btn-logout subnav-items">Logout</li>
                                 </ul>
@@ -68,7 +69,7 @@
                         <li class="main-menu">
                             <div>
                                 <i class="ri-contacts-book-2-line"></i>
-                                <a href="DashboardTeacher.html">Teacher Dashboard</a>
+                                <a href="DashboardStudent.html">Student Dashboard</a>
                             </div>
                         </li>
                         <li class="main-menu">
@@ -84,9 +85,15 @@
                                 <i class="menu-arrow ri-arrow-down-s-line"></i>
                             </div>
                             <ul class="sub-menu">
-                                <li><a href="ListTeacherCourses.html">Course List</a></li>
-                                <li><a href="RegisterCourse.html">Course Register</a></li>
+                                <li><a href="ListStudentCourses.html">Course List</a></li>
+                                <li><a href="ListStudentCoursesRegistered.html">Course Registered</a></li>
                             </ul>
+                        </li>
+                        <li class="main-menu">
+                            <div>
+                                <i class="ri-contacts-book-2-line"></i>
+                                <a href="ListStudentScore.html">Score List</a>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -94,77 +101,51 @@
             <div id="container">
                 <div class="page-header">
                     <div class="col">
-                        <h3 class="page-title">Profile Teacher</h3>
+                        <h3 class="page-title">Profile Students</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-items">Teachers/</li>
-                            <li class="breadcrumb-items">Profile Teacher</li>
+                            <li class="breadcrumb-items">Students/</li>
+                            <li class="breadcrumb-items">Profile Students</li>
                         </ul>
                     </div>
                 </div>
-                <div class="profile-header">
-                    <div class="profile-info">
-                        <div class="profile-user-img">
-                            <div class="user-img"></div>
-                        </div>
-                        <div class="profile-user-info">
-                            <span class="fullname"></span>
-                            <div class="profile-contact-info">
-                                <span>
-                                    Phone number:
-                                    <span class="phone"> </span>
-                                </span>
-                                <p></p>
-                                <span>
-                                    Email:
-                                    <span class="email"> </span>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="profile-user-btn">
-                            <a href="EditProfileTeacher.html" class="btn btn-edit">Edit</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="profile-body">
-                    <h3 class="form-title">Personal Details</h3>
-                    <div class="profile-info">
-                        <span class="profile-info-key"> Name </span>
-                        <span class="fullname profile-info-value"> </span>
-                    </div>
-                    <div class="profile-info">
-                        <span class="profile-info-key"> Gender </span>
-                        <span class="gender profile-info-value"> </span>
-                    </div>
-                    <div class="profile-info">
-                        <span class="profile-info-key"> Date of Birth </span>
-                        <span class="birth profile-info-value"> </span>
-                    </div>
-                    <div class="profile-info">
-                        <span class="profile-info-key"> Phone number </span>
-                        <span class="phone profile-info-value"> </span>
-                    </div>
-                    <div class="profile-info">
-                        <span class="profile-info-key"> Email </span>
-                        <span class="email profile-info-value"> </span>
-                    </div>
-                </div>
                 <div class="page-body">
+                    <div class="header-form" style="display: flex; justify-content: space-between">
+                        <h3 class="form-title">Student Information</h3>
+                        <div class="avatar-container" style="display: flex; justify-content: flex-end; flex-direction: column; align-items: center; width: 120px; margin-right: 20px">
+                            <img src="" alt="" id="avatar" style="width: 120px; height: 120px" />
+                            <label for="image-avatar" class="btn form-label btn-avatar" style="opacity: 1; width: 124px; text-align: center; height: 28px">Upload image</label>
+                            <input type="file" name="image-avatar" id="image-avatar" style="display: none" />
+                        </div>
+                    </div>
                     <form action="" class="row">
-                        <h3 class="form-title">Login Details</h3>
-                        <input type="hidden" name="" id="" value="account" />
-
-                        <div class="col form-group">
-                            <label for="" class="form-label">Username</label>
-                            <input type="text" name="username" id="" class="form-input" />
-                        </div>
-
                         <div class="col-half form-group">
-                            <label for="" class="form-label">Old Password</label>
-                            <input type="password" name="" id="" class="form-input" />
+                            <label for="first-name" class="form-label">First Name</label>
+                            <input type="text" name="firstname" id="first-name" class="form-input" />
                         </div>
                         <div class="col-half form-group">
-                            <label for="" class="form-label">New Password</label>
-                            <input type="password" name="password" id="" class="form-input" />
+                            <label for="last-name" class="form-label">Last Name</label>
+                            <input type="text" name="lastname" id="last-name" class="form-input" />
+                        </div>
+                        <div class="col-half form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="text" name="email" id="email" class="form-input" />
+                        </div>
+                        <div class="col-half form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="text" name="phone" id="phone" class="form-input" />
+                        </div>
+                        <div class="col-half form-group">
+                            <label for="gender" class="form-label">Gender</label>
+                            <select name="gender" id="gender" class="form-input">
+                                <option value="">Select Gender</option>
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                        <div class="col-half form-group">
+                            <label for="birth" class="form-label">Date of Birth</label>
+                            <input type="date" name="birth" id="birth" class="form-input" />
                         </div>
                         <div class="col">
                             <button type="submit" class="btn btn-submit">Submit</button>
@@ -173,11 +154,29 @@
                     </form>
                 </div>
             </div>
-            <div id="footer"></div>
+            <div id="footer">
+                <span>Copyright © </span>
+            </div>
         </div>
 
-        <script type="module" src="../../assets/scripts/main.js"></script>
-        <script type="module" src="../../assets/scripts/EditContent.js"></script>
-        <script type="module" src="../../assets/scripts/GetProfile.js"></script>
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+            const firebaseConfig = {
+                apiKey: "AIzaSyDfzLDDrZBAAJqvLwUhGvQkLxpLuRVA5gU",
+                authDomain: "music-656c2.firebaseapp.com",
+                databaseURL: "https://music-656c2-default-rtdb.firebaseio.com",
+                projectId: "music-656c2",
+                storageBucket: "music-656c2.appspot.com",
+                messagingSenderId: "66428751827",
+                appId: "1:66428751827:web:ef9453bcefe71298046926",
+                measurementId: "G-32WH3PMPLM",
+            };
+            const app = initializeApp(firebaseConfig);
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1046.0/aws-sdk.js"></script>
+        <script type="module" src="./assets/scripts/main.js"></script>
+        <script type="module" src="./assets/scripts/EditContent.js"></script>
+        <script type="module" src="./assets/scripts/UploadImage.js"></script>
     </body>
 </html>
