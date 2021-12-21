@@ -9,19 +9,19 @@ public class StudentDTO {
     private String firstname;
     private String lastname;
     private String email;
-    private String image;
+//    private String image;
     private String birth;
     private String phone;
     private String gender;
     private Long account_id;
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
+//    public String getImage() {
+//        return image;
+//    }
+//
+//    public void setImage(String image) {
+//        this.image = image;
+//    }
 
     public Long getStudent_id() {
         return student_id;
