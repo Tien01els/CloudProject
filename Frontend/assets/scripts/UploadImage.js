@@ -10,9 +10,39 @@ console.log(imageInput);
 
 imageInput.onchange = async () => {
     console.log(imageInput.value);
-    avatar.src = "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg";
-    const { url } = await fetch("http://127.0.0.1:3000/s3Url").then((res) => res.json());
+
+    const file = imageInput.files[0];
+
+    // get secure url from our server
+    const { url } = await fetch("http://35.173.156.152:8081/s3Url").then((res) => res.json());
     console.log(url);
+
+    // post the image direclty to the s3 bucket
+    await fetch(url, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+        body: file,
+    });
+
+    const imageUrl = url.split("?")[0];
+    console.log(imageUrl);
+
+    // post requst to my server to store any extra data
+    getUser().then((user) => {
+        const api = URL + "/" + user.key_userrole + "/uploadImage";
+        const data = { imageUrl: imageUrl };
+        $.ajax({
+            type: "POST",
+            url: api,
+            contentType: "application/json",
+            data: JSON.stringify(imageUrl),
+        }).done((res) => {
+            console.log(res);
+            avatar.src = imageUrl;
+        });
+    });
 };
 
 // imageForm.addEventListener("submit", (event) => {

@@ -58,7 +58,7 @@ public class TeacherServiceImpl implements TeacherService{
     public HashMap<String, String> updateTeacherImage(String imageURL){
         Teacher existingTeacher = teacherRepository.findById(GlobalVariable.IDuser).orElse(null);
         assert existingTeacher != null;
-//        existingTeacher.setImage(imageURL);
+        existingTeacher.setImage(imageURL);
         teacherRepository.save(existingTeacher);
         return new HashMap<>() {{put("key", "Success");}};
     }

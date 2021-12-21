@@ -28,8 +28,8 @@ public class TeacherController {
         return ResponseEntity.ok(result);
     }
 
-    @PutMapping("/uploadImage/{imageURL}")
-    public ResponseEntity<?> updateTeacher(@PathVariable("imageURL") String imageURL){
+    @PostMapping("/uploadImage")
+    public ResponseEntity<?> updateTeacher(@RequestBody String imageURL){
         return ResponseEntity.ok(teacherService.updateTeacherImage(imageURL));
     }
 

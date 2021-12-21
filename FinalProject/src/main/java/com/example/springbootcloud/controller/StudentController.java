@@ -21,9 +21,8 @@ public class StudentController {
         return ResponseEntity.ok(result);
     }
 
-    @PutMapping("/uploadImage/{imageURL}")
-    public ResponseEntity<?> updateStudent(@PathVariable("imageURL") String imageURL){
-
+    @PostMapping("/uploadImage")
+    public ResponseEntity<?> updateStudent(@RequestBody String imageURL){
         return ResponseEntity.ok(studentService.updateStudentImage(imageURL));
     }
 
