@@ -69,24 +69,7 @@
                         <li class="main-menu">
                             <div>
                                 <i class="ri-contacts-book-2-line"></i>
-                                <a href="DashboardStudent.html">Student Dashboard</a>
-                            </div>
-                        </li>
-                        <li class="main-menu">
-                            <div>
-                                <i class="ri-contacts-book-2-line"></i>
-                                <span>Courses</span>
-                                <i class="menu-arrow ri-arrow-down-s-line"></i>
-                            </div>
-                            <ul class="sub-menu">
-                                <li><a href="ListStudentCourses.html">Course List</a></li>
-                                <li><a href="ListStudentCoursesRegistered.html">Course Registered</a></li>
-                            </ul>
-                        </li>
-                        <li class="main-menu">
-                            <div>
-                                <i class="ri-contacts-book-2-line"></i>
-                                <a href="ListStudentScore.html">Score List</a>
+                                <a href="Translate.html">Translate</a>
                             </div>
                         </li>
                     </ul>
@@ -101,23 +84,26 @@
                 <div class="page-body">
                     <div class="selection">
                         <select name="source-language" id="source-languge">
-                            <option value="en">English</option>
-                            <option value="vn">Vietnamese</option>
-                            <option value="fr">French</option>
+                            <option value="AUTO">Auto</option>
+                            <option value="ENGLISH">English</option>
+                            <option value="VIETNAMESE">Vietnamese</option>
+                            <option value="FRENCH">French</option>
                         </select>
                         <div class="btn btn-change">
                             <i class="ri-exchange-box-line"></i>
                         </div>
-                        <select name="source-language" id="source-languge">
-                            <option value="vn">Vietnamese</option>
-                            <option value="en">English</option>
-                            <option value="fr">French</option>
+                        <select name="target-language" id="target-languge">
+                            <option value="AUTO">Auto</option>
+                            <option value="ENGLISH">English</option>
+                            <option value="VIETNAMESE">Vietnamese</option>
+                            <option value="FRENCH">French</option>
                         </select>
                     </div>
                     <div class="translate-container">
-                        <textarea name="" id="" cols="30" rows="10" class="source-text">Source language</textarea>
+                        <textarea name="" id="" cols="30" rows="10" class="source-text"></textarea>
                         <textarea name="" id="" cols="30" rows="10" class="target-text" readonly="true"></textarea>
                     </div>
+                    <button class="btn btn-translate" style="margin-top: 12px">Submit</button>
                 </div>
             </div>
             <div id="footer">
@@ -143,5 +129,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1046.0/aws-sdk.js"></script>
         <script type="module" src="../../assets/scripts/main.js"></script>
         <script type="module" src="../../assets/scripts/EditContent.js"></script>
+        <script type="module" src="../../assets/scripts/Translate.js"></script>
     </body>
 </html>
