@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import crypto from "crypto";
 import { promisify } from "util";
 
+const randomBytes = promisify(crypto.randomBytes);
 dotenv.config();
 
 const region = "us-west-2";
@@ -14,7 +15,7 @@ const s3 = new aws.S3({
     region,
     accessKeyId,
     secretKeyId,
-    signatureVersion: "4",
+    signatureVersion: "v4",
 });
 
 export async function generateUploadURL() {

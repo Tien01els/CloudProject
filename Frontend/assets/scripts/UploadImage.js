@@ -1,6 +1,5 @@
 import { URL } from "./URL.js";
 import getUser from "./GetUser.js";
-import { generateUploadURL } from "./s3.js";
 
 const imageBtn = document.querySelector(".btn-avatar");
 const imageInput = document.querySelector("#image-avatar");
@@ -9,9 +8,11 @@ const avatar = document.querySelector("#avatar");
 import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
 console.log(imageInput);
 
-imageInput.onchange = () => {
+imageInput.onchange = async () => {
     console.log(imageInput.value);
     avatar.src = "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg";
+    const { url } = await fetch("http://127.0.0.1:3000/s3Url").then((res) => res.json());
+    console.log(url);
 };
 
 // imageForm.addEventListener("submit", (event) => {
