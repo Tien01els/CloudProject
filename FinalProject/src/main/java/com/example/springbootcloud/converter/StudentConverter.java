@@ -11,7 +11,7 @@ public class StudentConverter {
         student.setStudent_id(dto.getStudent_id());
         student.setFirstname(dto.getFirstname());
         student.setLastname(dto.getLastname());
-//        student.setImage(dto.getImage());
+        student.setImage(dto.getImage());
         student.setEmail(dto.getEmail());
         student.setBirth(dto.getBirth());
         student.setPhone(dto.getPhone());
@@ -25,7 +25,7 @@ public class StudentConverter {
         dto.setStudent_id(entity.getStudent_id());
         dto.setFirstname(entity.getFirstname());
         dto.setLastname(entity.getLastname());
-//        dto.setImage(entity.getImage());
+        dto.setImage(entity.getImage());
         dto.setEmail(entity.getEmail());
         dto.setBirth(entity.getBirth());
         dto.setPhone(entity.getPhone());
@@ -43,7 +43,7 @@ public class StudentConverter {
     public Student toExistingEntity(Student entity, StudentDTO dto){
         entity.setFirstname(dto.getFirstname());
         entity.setLastname(dto.getLastname());
-//        entity.setImage(dto.getImage());
+        entity.setImage(dto.getImage());
         entity.setEmail(dto.getEmail());
         entity.setBirth(dto.getBirth());
         entity.setPhone(dto.getPhone());
